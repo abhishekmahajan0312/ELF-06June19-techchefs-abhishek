@@ -3,15 +3,15 @@ package com.tc.designpatterns.dao;
 import java.util.ArrayList;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.Transaction;
 
 import com.tc.designpatterns.beans.EmployeeInfoBean;
+import com.tc.designpatterns.util.HibernateUtil;
 
 import lombok.extern.java.Log;
 
 @Log
-public final class EmployeeDAOHibernateImpl implements EmployeeDao {
+public final class EmployeeDAOHibernateImpl2 implements EmployeeDao {
 
 	public ArrayList<EmployeeInfoBean> getAllEmployeeInfo() {
 		// TO DO
@@ -31,21 +31,9 @@ public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 
 	public EmployeeInfoBean getEmployeeInfo(int id) {
 		try {
-			// 1. Load the config file
-			Configuration cfg = new Configuration();
-			cfg.configure();// By default it looks for hibernate.cfg.xml file
-//			cfg.configure(new File("D:\\MyHibernateConfigFile.xml"));
-
-//			cfg.configure(new URL(
-//					"https://raw.githubusercontent.com/abhishekmahajan0312/ELF-06June19-techchefs-abhishek/master/MyHibernateConfigFile.xml"));
-//
-			cfg.addAnnotatedClass(EmployeeInfoBean.class);
-
-			// 2. Build the Session Factory
-			SessionFactory factory = cfg.buildSessionFactory();
 
 			// 3. Open Session
-			Session session = factory.openSession();
+			Session session = HibernateUtil.openSession();
 
 			// 4. Interact with the DB via Session
 			EmployeeInfoBean bean = session.get(EmployeeInfoBean.class, id);
@@ -61,28 +49,56 @@ public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 		}
 	}
 
+	private boolean saveOrUpdate(EmployeeInfoBean bean) {
+		Transaction txn = null;
+		try {
+			Session session = HibernateUtil.openSession();
+			txn = session.beginTransaction();
+//			session.saveOrUpdate(bean);
+			txn.commit();
+			return true;
+		} catch (Exception e) {
+			txn.rollback();
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 	@Override
 	public boolean createEmployeeInfo(EmployeeInfoBean bean) {
 		// TODO Auto-generated method stub
-		return false;
+		return saveOrUpdate(bean);
+
 	}
 
 	@Override
 	public boolean updateEmployeeInfo(EmployeeInfoBean bean) {
 		// TODO Auto-generated method stub
-		return false;
+		return saveOrUpdate(bean);
 	}
 
 	@Override
 	public boolean deleteEmployeeInfo(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Transaction txn = null;
+		EmployeeInfoBean bean = new EmployeeInfoBean();
+		bean.setId(id);
+		try {
+			Session session = HibernateUtil.openSession();
+			txn = session.beginTransaction();
+			session.delete(bean);
+			txn.commit();
+			return true;
+		} catch (Exception e) {
+			txn.rollback();
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public boolean deleteEmployeeInfo(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return deleteEmployeeInfo(Integer.parseInt(id));
 	}
 
 //END of getEmployeeInfo(int) method

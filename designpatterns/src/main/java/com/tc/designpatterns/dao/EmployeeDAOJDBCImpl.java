@@ -118,6 +118,30 @@ public final class EmployeeDAOJDBCImpl implements EmployeeDao {
 
 	}
 
+	@Override
+	public boolean createEmployeeInfo(EmployeeInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateEmployeeInfo(EmployeeInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteEmployeeInfo(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteEmployeeInfo(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 //END of getEmployeeInfo(int) method
 
 }

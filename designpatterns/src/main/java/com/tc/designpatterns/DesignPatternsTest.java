@@ -1,5 +1,9 @@
 package com.tc.designpatterns;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.tc.designpatterns.beans.EmployeeInfoBean;
 import com.tc.designpatterns.dao.EmployeeDAOFactory;
 import com.tc.designpatterns.dao.EmployeeDao;
@@ -12,7 +16,7 @@ import lombok.extern.java.Log;
  */
 @Log
 public class DesignPatternsTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 //		EmployeeDao dao = new EmployeeDAOJDBCImpl();
 //		printInfo(dao.getEmployeeInfo(1));
 //		printInfo(dao.getEmployeeInfo("2"));
@@ -26,6 +30,28 @@ public class DesignPatternsTest {
 		EmployeeDao dao = EmployeeDAOFactory.getInstance();
 		printInfo(dao.getEmployeeInfo(1));
 		printInfo(dao.getEmployeeInfo("2"));
+
+		EmployeeInfoBean empInf = new EmployeeInfoBean();
+		empInf.setId(121);
+		empInf.setName("Akshay");
+		empInf.setAge(25);
+		empInf.setGender("male");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = format.parse("2012-12-13");
+
+		empInf.setSalary(20000);
+		empInf.setPhone(9876543210l);
+		empInf.setJoiningDate(date);
+		empInf.setAccountNumber(506520102044558l);
+		empInf.setEmail("akshay@gmail.com");
+		empInf.setDesignation("Software Engineer");
+
+		empInf.setDob(format.parse("1995-02-12"));
+		empInf.setDepartmentId(1);
+		empInf.setManagerId(5);
+
+		log.info("Inserted the Employee Info? Ans: " + dao.createEmployeeInfo(empInf));
+//		dao.deleteEmployeeInfo(121);
 	}// End of Main
 
 	private static void printInfo(EmployeeInfoBean bean) {
