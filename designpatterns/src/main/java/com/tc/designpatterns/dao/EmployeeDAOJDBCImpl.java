@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.tc.designpatterns.beans.EmployeeInfoBean;
 
@@ -15,7 +16,8 @@ import lombok.extern.java.Log;
 @Log
 public final class EmployeeDAOJDBCImpl implements EmployeeDao {
 
-	public ArrayList<EmployeeInfoBean> getAllEmployeeInfo() {
+//	public ArrayList<EmployeeInfoBean> getAllEmployeeInfo() {
+	public List<EmployeeInfoBean> getAllEmployeeInfo() {
 		String dbUrl = "jdbc:mysql://localhost:3306/techchefs_db";
 		String query = "select * from employee_info";
 		try (Connection conn = DriverManager.getConnection(dbUrl, "root", "root");

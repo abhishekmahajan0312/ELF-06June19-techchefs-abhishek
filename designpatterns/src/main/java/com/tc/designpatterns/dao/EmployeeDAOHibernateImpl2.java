@@ -1,9 +1,10 @@
 package com.tc.designpatterns.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.tc.designpatterns.beans.EmployeeInfoBean;
 import com.tc.designpatterns.util.HibernateUtil;
@@ -13,9 +14,15 @@ import lombok.extern.java.Log;
 @Log
 public final class EmployeeDAOHibernateImpl2 implements EmployeeDao {
 
-	public ArrayList<EmployeeInfoBean> getAllEmployeeInfo() {
-		// TO DO
-		return null;
+	public List<EmployeeInfoBean> getAllEmployeeInfo() {
+//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.openSession();
+		String hql = "from EmployeeInfoBean";
+		Query query = session.createQuery(hql);
+		List<EmployeeInfoBean> beans = query.list();
+
+		return beans;
 
 	}
 

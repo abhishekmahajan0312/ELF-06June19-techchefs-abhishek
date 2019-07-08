@@ -1,11 +1,13 @@
 package com.tc.designpatterns.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.tc.designpatterns.beans.EmployeeInfoBean;
 
 public interface EmployeeDao {
-	ArrayList<EmployeeInfoBean> getAllEmployeeInfo();
+//	ArrayList<EmployeeInfoBean> getAllEmployeeInfo();
+
+	List<EmployeeInfoBean> getAllEmployeeInfo();
 
 	EmployeeInfoBean getEmployeeInfo(String id);
 

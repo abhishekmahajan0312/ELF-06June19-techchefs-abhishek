@@ -3,6 +3,7 @@ package com.tc.designpatterns;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.tc.designpatterns.beans.EmployeeInfoBean;
 import com.tc.designpatterns.dao.EmployeeDAOFactory;
@@ -20,14 +21,14 @@ public class DesignPatternsTest {
 //		EmployeeDao dao = new EmployeeDAOJDBCImpl();
 //		printInfo(dao.getEmployeeInfo(1));
 //		printInfo(dao.getEmployeeInfo("2"));
-//
-//		ArrayList<EmployeeInfoBean> beans = dao.getAllEmployeeInfo();
-//		for (EmployeeInfoBean bean : beans) {
-//			printInfo(bean);
-//		}
+		EmployeeDao dao = EmployeeDAOFactory.getInstance();
+		List<EmployeeInfoBean> beans = dao.getAllEmployeeInfo();
+		for (EmployeeInfoBean bean : beans) {
+			printInfo(bean);
+		}
 
 //		EmployeeDao dao2 = new EmployeeDAOHibernateImpl();
-		EmployeeDao dao = EmployeeDAOFactory.getInstance();
+//		dao = EmployeeDAOFactory.getInstance();
 		printInfo(dao.getEmployeeInfo(1));
 		printInfo(dao.getEmployeeInfo("2"));
 

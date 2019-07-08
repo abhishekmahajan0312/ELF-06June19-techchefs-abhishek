@@ -15,5 +15,6 @@
 
         <mapping class="com.tc.hibernateApp.dto.EmployeeInfoBean" />
         <mapping class="com.tc.hibernateApp.dto.EmployeeOtherInfoBean" />
+        <mapping class="com.tc.hibernateApp.dto.EmployeeNewInfoBean" />
     </session-factory>
 </hibernate-configuration>
