@@ -11,11 +11,11 @@
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
-		<property name="hibernate.cache.use_second_level_cache">true</property>
-		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 		<property name="hibernate.format_sql">true</property>
-        <mapping class="com.tc.hibernateApp.dto.EmployeeInfoBean" />
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property>
+		<!-- <mapping class="com.tc.hibernateApp.dto.EmployeeInfoBean" />
         <mapping class="com.tc.hibernateApp.dto.EmployeeOtherInfoBean" />
-        <mapping class="com.tc.hibernateApp.dto.EmployeeNewInfoBean" />
+        <mapping class="com.tc.hibernateApp.dto.EmployeeNewInfoBean" /> -->
     </session-factory>
 </hibernate-configuration>

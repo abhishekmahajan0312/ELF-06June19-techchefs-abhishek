@@ -1,8 +1,6 @@
 package com.tc.hibernateApp.cache;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import lombok.extern.java.Log;
 
@@ -15,23 +13,11 @@ public class HibernateCacheTest2 {
 	}// End Of Main
 
 	private static NewEmployeeInfoBean getEmployeeData(int id) {
-		// 1. Load the config file
-		Configuration configuration = new Configuration();
-		configuration.configure("com/tc/hibernateApp/cache/hibernate.cache.cfg.xml");
-		configuration.addAnnotatedClass(NewEmployeeInfoBean.class);
 
-		// 2. Build the SessionFactory
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-		// 3.Open the session
-		Session session = sessionFactory.openSession();
-
-		// 4. Interact with the DB via Session
-		NewEmployeeInfoBean bean = session.get(NewEmployeeInfoBean.class, 1);
-//				log.info("1st Time : " + bean.toString());
-
-		// 5.Close the Session
-		session.close();
+		NewEmployeeInfoBean bean = null;
+		try (Session session = HibernateCacheUtil.openSession();) {
+			bean = session.get(NewEmployeeInfoBean.class, id);
+		}
 		return bean;
 	}// End of getEmployeeData(int)
 }// End Of Class
