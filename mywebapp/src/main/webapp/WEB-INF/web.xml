@@ -9,9 +9,16 @@
   	<servlet-name>MyFirstServlet</servlet-name>
   	<servlet-class>com.tc.mywebapp.servlets.MyFirstServlet</servlet-class>
   </servlet>
-  
+  <!-- <servlet>
+  	<servlet-name>EmployeeSearchServlet</servlet-name>
+  	<servlet-class>com.tc.mywebapp.servlets.EmployeeSearchServlet</servlet-class>
+  </servlet> -->
   <servlet-mapping>
   	<servlet-name>MyFirstServlet</servlet-name>
   	<url-pattern>/currentDate</url-pattern>
   </servlet-mapping>
+  <!-- <servlet-mapping>
+  	<servlet-name>EmployeeSearchServlet</servlet-name>
+  	<url-pattern>/searchEmployee</url-pattern>
+  </servlet-mapping> -->
 </web-app>

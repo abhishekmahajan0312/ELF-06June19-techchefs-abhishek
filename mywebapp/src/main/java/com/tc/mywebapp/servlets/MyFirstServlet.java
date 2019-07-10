@@ -14,16 +14,22 @@ public class MyFirstServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String currentDateTime = new Date().toString();
+
+		// Get Query String Information
+		String fnameValue = req.getParameter("fname");
+		String lnameValue = req.getParameter("lname");
+
 		String htmlResponse = "<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset=\"ISO-8859-1\">"
 				+ "<title>My First HTML</title>" + "</head>" + "<body>" + "	<h1>" + "	Current Date and Time is : "
-				+ "	<br>" + "	<span style=\"color: red;\">" + currentDateTime + "</span>" + "	</h1>" + "</body>"
-				+ "</html>";
+				+ "	<br>" + "	<span style=\"color: red;\">" + currentDateTime + "</span><br><br>" + "First Name : "
+				+ fnameValue + "<br> Last Name : " + lnameValue + "	</h1>" + "</body>" + "</html>";
 
 		// Send the Above HTML Response to browser
-		resp.setContentType("text/html");
-		resp.setHeader("Refresh", "1"); // Auto Refresh
+		resp.setContentType("html/text");
+//		resp.setHeader("Refresh", "1"); // Auto Refresh
 		PrintWriter out = resp.getWriter();
 		out.println(htmlResponse);
+//		out.println(fnameValue.equals("ABc"));   
 
 	}// End of doGet()
 
