@@ -4,13 +4,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.tc.mywebapp.bean.DepartmentInfoBean;
 import com.tc.mywebapp.bean.EmployeeInfoBean;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 
 	private static SessionFactory buildSessionFactory() {
-		return new Configuration().configure().addAnnotatedClass(EmployeeInfoBean.class).buildSessionFactory();
+		return new Configuration().configure().addAnnotatedClass(EmployeeInfoBean.class).addAnnotatedClass(DepartmentInfoBean.class).buildSessionFactory();
 
 	}
 

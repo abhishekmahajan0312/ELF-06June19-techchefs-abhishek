@@ -11,11 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MyFirstServlet extends HttpServlet {
 
+	
+	public MyFirstServlet() {
+		// TODO Auto-generated constructor stub
+		System.out.println("Inside MyFirst Servlet");
+	}
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected  void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String currentDateTime = new Date().toString();
 
 		// Get Query String Information
+		String httpMethod = req.getMethod();
+		String protocol = req.getProtocol();
+		String requestUrl = req.getRequestURL().toString();
+		System.out.println("HTTP Method::: "+httpMethod);
+		System.out.println("Protocol::: "+protocol);
+		System.out.println("Request URL::: "+requestUrl);
 		String fnameValue = req.getParameter("fname");
 		String lnameValue = req.getParameter("lname");
 
@@ -25,7 +37,7 @@ public class MyFirstServlet extends HttpServlet {
 				+ fnameValue + "<br> Last Name : " + lnameValue + "	</h1>" + "</body>" + "</html>";
 
 		// Send the Above HTML Response to browser
-		resp.setContentType("html/text");
+		resp.setContentType("text/html");
 //		resp.setHeader("Refresh", "1"); // Auto Refresh
 		PrintWriter out = resp.getWriter();
 		out.println(htmlResponse);

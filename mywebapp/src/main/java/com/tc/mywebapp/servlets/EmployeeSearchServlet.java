@@ -31,7 +31,7 @@ public class EmployeeSearchServlet extends HttpServlet {
 			out.print("<h1><span style=\"color: red;\">Employee Not Found !!</span></h1>");
 			out.print("</BODY>");
 			out.print("</HTML>");
-
+    
 		} else {
 			out.print("<HTML>");
 			out.print("<BODY>");
