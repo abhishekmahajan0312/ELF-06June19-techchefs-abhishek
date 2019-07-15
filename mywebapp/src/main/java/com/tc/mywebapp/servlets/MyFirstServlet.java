@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,30 +13,52 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MyFirstServlet extends HttpServlet {
 
-	
 	public MyFirstServlet() {
-		// TODO Auto-generated constructor stub
-		System.out.println("Inside MyFirst Servlet");
+//		this(20);
+		System.out.println("Inside MyFirst Servlet 1");
+		{
+			System.out.println("222");
+		}
+		System.out.println("333");
 	}
+//	public MyFirstServlet(int i) {				//With only this constructor it will not instantiate at runtime
+//		// TODO Auto-generated constructor stub
+//		this("");
+//		System.out.println("Inside MyFirst Servlet 2");
+//	}
+//	public MyFirstServlet(String s) {
+//		System.out.println("Inside MyFirst Servlet 3");
+//	}
+	
+//	public static void main(String[] args) { //This will never execute
+//		System.out.println("Hello World");
+//	}
 	
 	@Override
-	protected  void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected synchronized void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		ServletContext ctx = getServletContext();
+		String movieName = ctx.getInitParameter("movie");
+		
+		ServletConfig cfg = getServletConfig();
+		String actorName = cfg.getInitParameter("actor");
+		
 		String currentDateTime = new Date().toString();
 
 		// Get Query String Information
-		String httpMethod = req.getMethod();
-		String protocol = req.getProtocol();
-		String requestUrl = req.getRequestURL().toString();
-		System.out.println("HTTP Method::: "+httpMethod);
-		System.out.println("Protocol::: "+protocol);
-		System.out.println("Request URL::: "+requestUrl);
+//		String httpMethod = req.getMethod();
+//		String protocol = req.getProtocol();
+//		String requestUrl = req.getRequestURL().toString();
+//		System.out.println("HTTP Method::: "+httpMethod);
+//		System.out.println("Protocol::: "+protocol);
+//		System.out.println("Request URL::: "+requestUrl);
 		String fnameValue = req.getParameter("fname");
 		String lnameValue = req.getParameter("lname");
 
 		String htmlResponse = "<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset=\"ISO-8859-1\">"
 				+ "<title>My First HTML</title>" + "</head>" + "<body>" + "	<h1>" + "	Current Date and Time is : "
 				+ "	<br>" + "	<span style=\"color: red;\">" + currentDateTime + "</span><br><br>" + "First Name : "
-				+ fnameValue + "<br> Last Name : " + lnameValue + "	</h1>" + "</body>" + "</html>";
+				+ fnameValue + "<br> Last Name : " + lnameValue + "<br> Movie Name : " + movieName + "<br> Actor Name : " + actorName + "	</h1>" + "</body>" + "</html>";
 
 		// Send the Above HTML Response to browser
 		resp.setContentType("text/html");

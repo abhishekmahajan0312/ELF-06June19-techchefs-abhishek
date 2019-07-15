@@ -3,7 +3,10 @@ package com.tc.mywebapp.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +16,21 @@ import com.tc.mywebapp.bean.EmployeeInfoBean;
 import com.tc.mywebapp.dao.EmployeeDAOFactory;
 import com.tc.mywebapp.dao.EmployeeDao;
 
-@WebServlet("/search")
+@WebServlet(urlPatterns = "/search", 
+			initParams = {
+							@WebInitParam(name="actress", value="Basanti")
+						 }
+			)
 public class EmployeeSearchServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		ServletContext ctx = getServletContext();
+		String movieName = ctx.getInitParameter("movie");
+
+		ServletConfig cfg = getServletConfig();
+		String actorName = cfg.getInitParameter("actor");
+		String actressName = cfg.getInitParameter("actress");
 
 		String idValue = req.getParameter("id");
 
@@ -31,7 +45,7 @@ public class EmployeeSearchServlet extends HttpServlet {
 			out.print("<h1><span style=\"color: red;\">Employee Not Found !!</span></h1>");
 			out.print("</BODY>");
 			out.print("</HTML>");
-    
+
 		} else {
 			out.print("<HTML>");
 			out.print("<BODY>");
@@ -49,6 +63,9 @@ public class EmployeeSearchServlet extends HttpServlet {
 			out.println("<br>DOB:" + bean.getDob());
 			out.println("<br>Department Id: " + bean.getDepartmentId());
 			out.println("<br>Manager Id: " + bean.getManagerId());
+			out.println("<br>Movie Name: " + movieName);
+			out.println("<br>Actor: " + actorName);
+			out.println("<br>Actress: " + actressName);
 			out.print("</BODY>");
 			out.print("</HTML>");
 
