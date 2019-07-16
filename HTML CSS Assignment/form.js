@@ -19,5 +19,25 @@ function validateForm() {
         document.getElementById("myButton").disabled = true;
     }
 }
-
-// let button = document.getElementById("myButton");
+let tbpassword = document.getElementById("password");
+let cbPassword = document.getElementById("cbpassword");
+cbPassword.addEventListener('change',()=>{
+    if(cbPassword.checked===true)
+    {
+        tbpassword.type="text";
+    }
+    else{
+        tbpassword.type="password";
+    }
+});
+let cftbpassword = document.getElementById("confirm_password");
+let cfcbPassword = document.getElementById("cfcbpassword");
+cfcbPassword.addEventListener('change',()=>{
+    if(cfcbPassword.checked===true)
+    {
+        cftbpassword.type="text";
+    }
+    else{
+        cftbpassword.type="password";
+    }
+});

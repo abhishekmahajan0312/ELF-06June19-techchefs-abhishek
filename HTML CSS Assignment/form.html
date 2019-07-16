@@ -8,7 +8,10 @@
     <title>Document</title>
     <!-- <link rel="stylesheet" href="./font/font-awesome-4.7.0/css/font-awesome.css"> -->
     <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="form.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 
 <body>
@@ -23,26 +26,44 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label>Email</label> <input onkeyup="validateForm()" class="form-control" type="email" name="email"
-                                            placeholder="Enter Email ID" />
+                                        <label>Email</label> <input onkeyup="validateForm()" class="form-control"
+                                            type="email" name="email" placeholder="Enter Email ID" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Password</label>
+                                        <div class="input-group row ">
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" id="id"
+                                                    placeholder="Enter Password" onkeyup="validateForm()">
+                                            </div>
+                                            <div class="input-group-prepend col-md-2">
+                                                <div class="input-group-text">ID</div>
+                                            </div>
+                                        </div>
+                                        <!--<input  onkeyup="validateForm()" class="form-control " type="password"
+                                            name="password" placeholder="Enter Password" id="password" /><span class="input-group-btn">
+                                                <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                              </span> -->
+                                        <input type="checkbox" id="cbpassword"><span style="font-size: 12px;">Show
+                                            Password</span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label>Password</label> <input onkeyup="validateForm()" class="form-control" type="password"
-                                            name="password" placeholder="Enter Password" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label>Confirm Password</label> <input onkeyup="validateForm()" class="form-control" type="password"
-                                            name="confirm_password" placeholder="Confirm Password" />
+                                        <label>Confirm Password</label> <input onkeyup="validateForm()"
+                                            class="form-control" type="password" name="confirm_password"
+                                            placeholder="Confirm Password" id="confirm_password" />
+                                        <input type="checkbox" id="cfcbpassword"><span style="font-size: 12px;">Show
+                                            Password</span>
                                     </div>
                                 </div>
                                 <br>
                                 <div class=" d-flex flex-row">
 
-                                    <button type="button" id="myButton" disabled class="p-1 col-md-5 btn btn-outline-info">Submit</button>
+                                    <button type="button" id="myButton" disabled
+                                        class="p-1 col-md-5 btn btn-outline-info">Submit</button>
 
                                 </div>
                             </div>
@@ -53,6 +74,7 @@
             </div>
         </div>
     </div>
+    <script src="form.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here for init method and destroy method-->
+	<!-- <bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean" 
+		scope="prototype" init-method="init" destroy-method="destroy"> </bean> -->
+	<!-- <bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean" 
+		scope="prototype"> </bean> -->
+<!-- //////////////////////////////////////// Manually wiring referencing department bean-->
+	<!-- <bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean" 
+		scope="prototype"> <property name="name" value="Adam"></property> <property 
+		name="id" value="101"></property> <property name="departmentBean" ref="departmentBean"></property> 
+		</bean> -->
+<!-- //////////////////////////////////////// Autowiring by name-->
+	<!-- <bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean" 
+		autowire="byName"> <property name="name" value="Adam"></property> <property 
+		name="id" value="101"></property></property> 
+		</bean> -->
+	
+	<!-- //////////////////////////////////////// Autowiring by type with primary=true-->
+	<!-- <bean id="employeeInfoBean1"
+		class="com.tc.springcore.beans.EmployeeInfoBean" autowire="byType">
+		<property name="name" value="Adam"></property>
+		<property name="id" value="101"></property>
+	</bean>
+
+	<bean id="departmentBean"
+		class="com.tc.springcore.beans.DepartmentBean">
+		<property name="deptID" value="500"></property>
+		<property name="deptName" value="CSE"></property>
+	</bean>
+	<bean id="departmentBean2"
+		class="com.tc.springcore.beans.DepartmentBean">
+		<property name="deptID" value="200"></property>
+		<property name="deptName" value="IT"></property>
+	</bean>
+	<bean id="departmentBean3"
+		class="com.tc.springcore.beans.DepartmentBean" primary="true">
+		<property name="deptID" value="100"></property>
+		<property name="deptName" value="ECE" ></property>
+	</bean> -->
+		<!-- //////////////////////////////////////// Autowiring by type with autowire-candidate=false-->
+	<bean id="employeeInfoBean1"
+		class="com.tc.springcore.beans.EmployeeInfoBean" autowire="byType">
+		<property name="name" value="Adam"></property>
+		<property name="id" value="101"></property>
+		
+	</bean>
+
+	<bean id="departmentBean"
+		class="com.tc.springcore.beans.DepartmentBean" autowire-candidate="false">
+		<property name="deptID" value="500"></property>
+		<property name="deptName" value="CSE"></property>
+	</bean>
+	<bean id="departmentBean2"
+		class="com.tc.springcore.beans.DepartmentBean" >
+		<property name="deptID" value="200"></property>
+		<property name="deptName" value="IT"></property>
+	</bean>
+	<bean id="departmentBean3"
+		class="com.tc.springcore.beans.DepartmentBean" autowire-candidate="false">
+		<property name="deptID" value="100"></property>
+		<property name="deptName" value="ECE" ></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+	<bean id="messageBean" class="com.tc.springcore.beans.MessageBean">
+		<property name="message" value="Hello to Spring!"></property>
+	</bean>
+	<bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean">
+		<property name="id" value="101"></property>
+		<property name="name" value="Abhishek"></property>
+	</bean>
+	<bean id="employeeInfoBean2" class="com.tc.springcore.beans.EmployeeInfoBean">
+		<property name="id" value="102"></property>
+		<property name="name" value="Megha"></property>
+	</bean>
+</beans>

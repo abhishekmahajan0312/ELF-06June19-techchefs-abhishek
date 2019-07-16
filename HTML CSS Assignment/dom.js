@@ -42,14 +42,39 @@ document.getElementById("div1").innerHTML = "<input type='text'>";
 
  */
 
-window.onload = function(){
-    document.getElementById('myButton').textContent = "Dont Click";
-}
-
-let button = document.getElementById("myButton");
-// button.onclick = function createNewElement(){
-//     document.getElementById("div1").innerHTML = "<a href='https://google.com'>Anchor Tag</a>";
+// window.onload = function(){
+//     document.getElementById('myButton').textContent = "Dont Click";
 // }
-button.addEventListener('click',()=>{
-    document.getElementById("div1").innerHTML = "<a href='https://google.com'>Anchor Tag</a>";
-});
+
+// let button = document.getElementById("myButton");
+// // button.onclick = function createNewElement(){
+// //     document.getElementById("div1").innerHTML = "<a href='https://google.com'>Anchor Tag</a>";
+// // }
+// button.addEventListener('click',()=>{
+//     document.getElementById("div1").innerHTML = "<a href='https://google.com'>Anchor Tag</a>";
+// });
+
+var john = {
+    name:"john",
+    age:25,
+    presentation: function(style,message){
+        if(style === 'formal'){
+            console.log("Hi "+this.name+ " good "+message);
+        }
+        else{
+            console.log("Hey "+this.name+" "+message);
+        }
+
+    }
+};
+john.presentation('formal','Morning');
+
+var mike= {
+    name:"mike",
+    age:26
+};
+// john.presentation.call(mike,'friendly','Evening'); //Call for string parameters
+// john.presentation.apply(mike,['friendly','Evening']); // Call for array Parameters
+
+var johnFormal = john.presentation.bind(mike,'formal'); //this will not invoke itself as call and apply. To call we have to execute next line
+johnFormal('Night');
