@@ -10,7 +10,8 @@ import lombok.extern.java.Log;
 public class EmployeeTest {
 
 	public static void main(String[] args) {
-		ApplicationContext appContext = new ClassPathXmlApplicationContext("employeebeans.xml");
+//		ApplicationContext appContext = new ClassPathXmlApplicationContext("employeebeans.xml");
+		ApplicationContext appContext = new ClassPathXmlApplicationContext("importAllConfig.xml");
 		
 //		EmployeeInfoBean empInf = (EmployeeInfoBean)appContext.getBean("employeeInfoBean1");
 //		Scanner sc = new Scanner(System.in);
