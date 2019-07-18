@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script>
+	function validateForm() {
+		var form_input = document.forms[0].getElementsByTagName("input");
+		var form_error = document.forms[0].getElementsByTagName("span");
+		for (let i = 0; i < form_input.length; i++) {
+			if (form_input[i].value === "") {
+				form_error[i].display = "block";
+				if (i === 0) {
+					form_error[i].innerHTML = "Department ID cannot be empty";
+				} else if (i === 1) {
+					form_error[i].innerHTML = "Department Name cannot be empty";
+				}
+				return false;
+			} else if (form_input[i].value !== "") {
+				form_error[i].style.display = "none";
+			}
+		}
+		return true;
+	}
+	
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-3 card">
+				<div class="card-body">
+					<h4 class="text-center border-bottom">Employee Login</h4>
+					<br>
+					<form class="form-horizontal" action="./login" method="POST">
+						<div class="col-auto">
+							<label class="sr-only" for="id">Id</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">ID</div>
+								</div>
+								<input onkeyup="validateForm()" type="number"
+									class="form-control" name="id" placeholder="Enter Employee ID">
+							</div>
+						</div>
+						<span id="email-error" style="display: none"
+							class="text-danger small"></span>
+						<div class="col-auto">
+							<label class="sr-only" for="password">Password</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">Password</div>
+								</div>
+								<input onkeyup="validateForm()" type="password" class="form-control" name="password"
+									placeholder="Enter Password">
+							</div>
+						</div>
+						<br>
+						<div class=" row">
+							<button type="button"
+								class="offset-1 col-md-5 btn btn-outline-dark"
+								style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
+							<button type="submit" class="col-md-5 btn btn-outline-info"
+								style="border-radius: 0 3px 3px 0;">Login</button>
+						</div>
+						<br>
+						<div class=" row">
+							<a href="createemployee.html" class="offset-1 col-md-5 btn btn-outline-success"
+								style="border-radius: 3px 0 0 3px; border-right: 0">Create Account</a>
+							<a href="forgotpassword.html" class="col-md-5 btn btn-outline-success"
+								style="border-radius: 0 3px 3px 0;">Forgot Password</a>
+						</div>
+						
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-3 card" style="background-color: lightgoldenrodyellow">
+				<div class="card-body">
+					<h4 class="text-center border-bottom">Employee Login</h4>
+					<br>
+					<form action="./login" method="POST" onsubmit="return validateForm()">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Department ID</label> <input class="form-control" type="number"
+											name="department_id" id=department_id placeholder="Enter Department ID" />
+										<span id="id-error" class="text-danger small"></span>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Department Name</label> <input class="form-control" type="text"
+											name="department_name" id="department_name"
+											placeholder="Enter Department Name" />
+										<span id="name-error" class="text-danger small"></span>
+									</div>
+								</div>
+								<br>
+								<div class=" d-flex flex-row">
+
+									<button type="button" class="p-1 offset-1 col-md-5 btn btn-outline-dark"
+										style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
+									<button type="submit" class="p-1 col-md-5 btn btn-outline-info"
+										style="border-radius: 0 3px 3px 0;">Submit</button>
+
+								</div>
+							</div>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body> -->
+
+</html>

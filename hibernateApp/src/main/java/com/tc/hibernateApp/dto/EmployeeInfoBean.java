@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "employee_info")
+//@Entity
+//@Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 	@Id
 	@Column(name = "id")
@@ -38,6 +38,8 @@ public class EmployeeInfoBean implements Serializable {
 	private int deptId;
 	@Column(name = "mngr_id")
 	private int mngrId;
+	@Column(name = "password")
+	private String password;
 
 	public int getId() {
 		return id;

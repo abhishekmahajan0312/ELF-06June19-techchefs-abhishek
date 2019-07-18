@@ -8,9 +8,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./font/font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        function validateForm() {
+            var form_input = document.forms[0].getElementsByTagName("input");
+            var form_error = document.forms[0].getElementsByTagName("span");
+            for (let i = 0; i < form_input.length; i++) {
+                if (form_input[i].value === "") {
+                    form_error[i].display = "block";
+                    if (i === 0) {
+                        form_error[i].innerHTML = "Department ID cannot be empty";
+                    }
+                    else if (i === 1) {
+                        form_error[i].innerHTML = "Department Name cannot be empty";
+                    }
+                    return false;
+                }
+                else if (form_input[i].value !== "") {
+                    form_error[i].style.display = "none";
+                }
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -28,6 +48,7 @@
                                     <div class="input-group-text">ID</div>
                                 </div>
                                 <input type="text" class="form-control" id="id" placeholder="Enter Employee ID">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -38,6 +59,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="education_type"
                                     placeholder="Enter Education Type">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -48,6 +70,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="degree_type"
                                     placeholder="Enter Degree Type">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -56,11 +79,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Branch</div>
                                 </div>
-                                <input type="text" class="form-control" id="branch"
-                                    placeholder="Enter Degree Branch">
+                                <input type="text" class="form-control" id="branch" placeholder="Enter Degree Branch">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
-                        
+
                         <div class="col-auto">
                             <label class="sr-only" for="college_name">College Name</label>
                             <div class="input-group mb-2">
@@ -69,6 +92,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="college_name"
                                     placeholder="Enter College Name">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -79,6 +103,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="university"
                                     placeholder="Enter University Name">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -87,8 +112,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Year Of Passing</div>
                                 </div>
-                                <input type="text" class="form-control" id="yop"
-                                    placeholder="dd-mm-yyyy">
+                                <input type="text" class="form-control" id="yop" placeholder="dd-mm-yyyy">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -97,8 +122,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Percentage</div>
                                 </div>
-                                <input type="text" class="form-control" id="percentage"
-                                    placeholder="Enter Percentage">
+                                <input type="text" class="form-control" id="percentage" placeholder="Enter Percentage">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -109,12 +134,15 @@
                                 </div>
                                 <input type="text" class="form-control" id="location"
                                     placeholder="Enter College Location">
+                                <span id="id-error" class="text-danger small"></span>
                             </div>
                         </div>
                         <div class=" row">
 
-                            <button type="button" class="offset-1 col-md-5 btn btn-outline-dark" style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
-                            <button type="button" class="col-md-5 btn btn-outline-info" style="border-radius: 0 3px 3px 0;">Submit</button>
+                            <button type="button" class="offset-1 col-md-5 btn btn-outline-dark"
+                                style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
+                            <button type="button" class="col-md-5 btn btn-outline-info"
+                                style="border-radius: 0 3px 3px 0;">Submit</button>
 
                         </div>
                     </form>
