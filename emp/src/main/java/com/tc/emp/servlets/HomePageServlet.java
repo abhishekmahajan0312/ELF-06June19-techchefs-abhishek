@@ -18,19 +18,27 @@ import com.tc.emp.bean.EmployeeInfoBean;
 public class HomePageServlet extends HttpServlet {
 
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 			PrintWriter out = resp.getWriter();
-			EmployeeInfoBean bean = (EmployeeInfoBean)req.getAttribute("emp");
-			
+			EmployeeInfoBean bean = (EmployeeInfoBean) req.getAttribute("bean");
+			if (bean == null) {
+				bean = (EmployeeInfoBean) getServletContext().getAttribute("bean");
+			}
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date joiningDate;
 			Date dob;
 
 			joiningDate = format.parse(bean.getJoiningDate().toString());
 			dob = format.parse(bean.getDob().toString());
-			
+
 			out.println(
 					"<!DOCTYPE html>                                                                                                         ");
 			out.println(
@@ -68,21 +76,21 @@ public class HomePageServlet extends HttpServlet {
 			out.println(
 					"            </div>                                                                                                      ");
 			out.println(
-					"            <form action='./search'><div class='col-md-8'>                                                                                      ");
+					"            <div class='col-md-8'><form action='./search' method='GET'>                                                                                      ");
 			out.println(
-					"                <input type='search' placeholder='Enter Employee ID or Name' class='form-control'>                                                              ");
-			out.println(
-					"            </div>                                                                                                      ");
-			out.println(
-					"            <div class='col-md-1'><a href='./search'><i class='fa fa-search'                                                               ");
-			out.println(
-					"                    style='font-size: 25px; color:rgba(110, 104, 104, 0.8); position: relative;  left: -60px;'></i></a>     ");
+					"                <input type='search' name='q' placeholder='Enter Employee ID or Name' class='form-control'>                                                              ");
 			out.println(
 					"            </div>                                                                                                      ");
+			out.println(
+					"            <div class='col-md-1'><button type='submit' class='fa fa-search  border-0'                                                               ");
+			out.println(
+					"                    style='font-size: 25px; background-color:rgba(255,255,255,0); color:rgba(110, 104, 104, 0.8); position: relative;  left: -75px;'></button>     ");
+			out.println(
+					"            </form></div>                                                                                                      ");
 			out.println(
 					"            <div class='col-md-1'>                                                                                      ");
 			out.println(
-					"                <a href='./logout'>Logout</a>                                                                           ");
+					"                <a class='btn btn-primary' href='./logout'>Logout</a>                                                                           ");
 			out.println(
 					"            </div>                                                                                                      ");
 			out.println(
@@ -111,32 +119,32 @@ public class HomePageServlet extends HttpServlet {
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Name</td>                                                                               ");
-			out.println(
-					"                            <td>"+bean.getName()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getName()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Age</td>                                                                                ");
-			out.println(
-					"                            <td>"+bean.getAge()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getAge()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Gender</td>                                                                             ");
-			out.println(
-					"                            <td>"+bean.getGender()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getGender()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>DOB</td>                                                                                ");
-			out.println(
-					"                            <td>"+dob+"</td>                                                                                   ");
+			out.println("                            <td>" + dob
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
@@ -167,16 +175,16 @@ public class HomePageServlet extends HttpServlet {
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Email</td>                                                                              ");
-			out.println(
-					"                            <td>"+bean.getEmail()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getEmail()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Phone Number</td>                                                                       ");
-			out.println(
-					"                            <td>"+bean.getPhone()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getPhone()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
@@ -231,36 +239,36 @@ public class HomePageServlet extends HttpServlet {
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Salary</td>                                                                             ");
-			out.println(
-					"                            <td>"+bean.getSalary()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getSalary()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                            <td>Manager ID</td>                                                                         ");
-			out.println(
-					"                            <td>"+bean.getManagerId()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getManagerId()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Joining Date</td>                                                                       ");
-			out.println(
-					"                            <td>"+joiningDate+"</td>                                                                                   ");
+			out.println("                            <td>" + joiningDate
+					+ "</td>                                                                                   ");
 			out.println(
 					"                            <td>Department ID</td>                                                                      ");
-			out.println(
-					"                            <td>"+bean.getDepartmentId()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getDepartmentId()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(
 					"                        <tr>                                                                                            ");
 			out.println(
 					"                            <td>Designation</td>                                                                        ");
-			out.println(
-					"                            <td>"+bean.getDesignation()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getDesignation()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                            <td>Account Number</td>                                                                     ");
-			out.println(
-					"                            <td>"+bean.getAccountNumber()+"</td>                                                                                   ");
+			out.println("                            <td>" + bean.getAccountNumber()
+					+ "</td>                                                                                   ");
 			out.println(
 					"                        </tr>                                                                                           ");
 			out.println(

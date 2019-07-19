@@ -16,7 +16,7 @@ import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
-@WebServlet(urlPatterns = "/search", 
+@WebServlet(urlPatterns = "/search2", 
 			initParams = {
 							@WebInitParam(name="actress", value="Basanti")
 						 }

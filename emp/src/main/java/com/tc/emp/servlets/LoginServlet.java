@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
@@ -21,21 +22,28 @@ import com.tc.emp.dao.EmployeeDao;
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
-
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		EmployeeDao dao = EmployeeDAOFactory.getInstance();
 		EmployeeInfoBean empInf = dao.getEmployeeInfo(id);
-		if(empInf.getPassword().equals(password)) {
+		if (empInf!=null && empInf.getPassword().equals(password)) {
+			HttpSession session = req.getSession(true);
+//			session.setAttribute("bean", empInf);
 			String url = "./home";
-			req.setAttribute("emp", empInf);
-			RequestDispatcher dispatcher = req.getRequestDispatcher(url);
-			dispatcher.forward(req, resp);
-		}
-		else {
-			
+			forwardRequest(url, empInf, req, resp);
+		} else {
+			String url = "./loginfail";
+			forwardRequest(url, empInf, req, resp);
 		}
 
+	}
+
+	private void forwardRequest(String url, EmployeeInfoBean empInf, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if (empInf != null) {
+			getServletContext().setAttribute("bean", empInf);
+		}
+		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+		
+		dispatcher.forward(req, resp);
 	}
 }

@@ -20,5 +20,7 @@ public interface EmployeeDao {
 	boolean deleteEmployeeInfo(int id);
 
 	boolean deleteEmployeeInfo(String id);
+	
+	public List<EmployeeInfoBean> getAllEmployeeInfoWithRestrictions(String condition);
 
 }

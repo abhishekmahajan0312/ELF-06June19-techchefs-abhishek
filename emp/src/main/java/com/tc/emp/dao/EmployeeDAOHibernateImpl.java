@@ -3,8 +3,11 @@ package com.tc.emp.dao;
 import java.util.Arrays;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import com.tc.emp.bean.EmployeeInfoBean;
@@ -16,8 +19,6 @@ import lombok.extern.java.Log;
 public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 
 	public List<EmployeeInfoBean> getAllEmployeeInfo() {
-//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-//		Session session = sessionFactory.openSession();
 		List<EmployeeInfoBean> beans = null;
 		try (Session session = HibernateUtil.openSession();) {
 			String hql = "from EmployeeInfoBean";
@@ -27,7 +28,23 @@ public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 		return beans;
 
 	}
-
+	
+	public List<EmployeeInfoBean> getAllEmployeeInfoWithRestrictions(String condition){
+		try (Session session = HibernateUtil.openSession();) {
+		String hql = "from EmployeeInfoBean where str(id) like :id";
+		Query query = session.createQuery(hql);
+//		query.setParameter("name", condition+"%");
+		query.setParameter("id", condition+"%");
+//		Criteria criteria = session.createCriteria(EmployeeInfoBean.class).add(Restrictions.like("id", Integer.parseInt(condition)));
+		List<EmployeeInfoBean> beans = query.list();
+		return beans;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
 	public EmployeeInfoBean getEmployeeInfo(String id) {
 		try {
 			return getEmployeeInfo(Integer.parseInt(id));

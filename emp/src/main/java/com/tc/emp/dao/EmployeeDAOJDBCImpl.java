@@ -144,6 +144,12 @@ public final class EmployeeDAOJDBCImpl implements EmployeeDao {
 		return false;
 	}
 
+	@Override
+	public List<EmployeeInfoBean> getAllEmployeeInfoWithRestrictions(String condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //END of getEmployeeInfo(int) method
 
 }

@@ -1,0 +1,127 @@
+package com.tc.emp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.tc.emp.bean.EmployeeInfoBean;
+import com.tc.emp.dao.EmployeeDAOFactory;
+import com.tc.emp.dao.EmployeeDao;
+
+@WebServlet("/loginfail")
+public class LoginFailServlet extends HttpServlet {
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		out.println("<!DOCTYPE html>                                                                                      ");
+		out.println("<html lang='en'>                                                                                     ");
+		out.println("                                                                                                     ");
+		out.println("<head>                                                                                               ");
+		out.println("<meta charset='UTF-8'>                                                                               ");
+		out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>                               ");
+		out.println("<meta http-equiv='X-UA-Compatible' content='ie=edge'>                                                ");
+		out.println("<title>Document</title>                                                                              ");
+		out.println("<link rel='stylesheet' href='bootstrap.min.css'>                                                     ");
+		out.println("<script src='jquery.min.js'></script>                                                                ");
+		out.println("<script src='bootstrap.min.js'></script>                                                             ");
+		out.println("<script>                                                                                             ");
+		out.println("	function validateForm() {                                                                         ");
+		out.println("		var form_input = document.forms[0].getElementsByTagName('input');                             ");
+		out.println("		var form_error = document.forms[0].getElementsByTagName('span');                              ");
+		out.println("		for (let i = 0; i < form_input.length; i++) {                                                 ");
+		out.println("			if (form_input[i].value === '') {                                                         ");
+		out.println("				form_error[i].display = 'block';                                                      ");
+		out.println("				if (i === 0) {                                                                        ");
+		out.println("					form_error[i].innerHTML = 'Department ID cannot be empty';                        ");
+		out.println("				} else if (i === 1) {                                                                 ");
+		out.println("					form_error[i].innerHTML = 'Department Name cannot be empty';                      ");
+		out.println("				}                                                                                     ");
+		out.println("				return false;                                                                         ");
+		out.println("			} else if (form_input[i].value !== '') {                                                  ");
+		out.println("				form_error[i].style.display = 'none';                                                 ");
+		out.println("			}                                                                                         ");
+		out.println("		}                                                                                             ");
+		out.println("		return true;                                                                                  ");
+		out.println("	}                                                                                                 ");
+		out.println("</script>                                                                                            ");
+		out.println("</head>                                                                                              ");
+		out.println("<body>                                                                                               ");
+		out.println("	<div class='container'>                                                                           ");
+		out.println("                                                                                                     ");
+		out.println("                                                                                                     ");
+		out.println("		<div class='row'>                                                                             ");
+		out.println("			<div class='col-md-6 offset-3 card'>                                                      ");
+		out.println("				                                                                                      ");
+		out.println("				<div class='card-body'>                                                               ");
+		out.println("					<h4 class='text-center border-bottom'>Employee Login</h4>                         ");
+		out.println("					<br>                                                                              ");
+		out.println("					<div class='alert alert-warning alert-dismissible fade show'                      ");
+		out.println("					role='alert'>                                                                     ");
+		out.println("					<strong>Sorry</strong> Invalid ID and Password!!                                  ");
+		out.println("					<button type='button' class='close' data-dismiss='alert'                          ");
+		out.println("						aria-label='Close'>                                                           ");
+		out.println("						<span aria-hidden='true'>&times;</span>                                       ");
+		out.println("					</button>                                                                         ");
+		out.println("				</div>                                                                                ");
+		out.println("					<form class='form-horizontal' action='./login' method='POST'>                     ");
+		out.println("						<div class='col-auto'>                                                        ");
+		out.println("							<label class='sr-only' for='id'>Id</label>                                ");
+		out.println("							<div class='input-group mb-2'>                                            ");
+		out.println("								<div class='input-group-prepend'>                                     ");
+		out.println("									<div class='input-group-text'>ID</div>                            ");
+		out.println("								</div>                                                                ");
+		out.println("								<input onkeyup='validateForm()' type='number'                         ");
+		out.println("									class='form-control' name='id' placeholder='Enter Employee ID'>   ");
+		out.println("							</div>                                                                    ");
+		out.println("						</div>                                                                        ");
+		out.println("						<span id='email-error' style='display: none'                                  ");
+		out.println("							class='text-danger small'></span>                                         ");
+		out.println("						<div class='col-auto'>                                                        ");
+		out.println("							<label class='sr-only' for='password'>Password</label>                    ");
+		out.println("							<div class='input-group mb-2'>                                            ");
+		out.println("								<div class='input-group-prepend'>                                     ");
+		out.println("									<div class='input-group-text'>Password</div>                      ");
+		out.println("								</div>                                                                ");
+		out.println("								<input onkeyup='validateForm()' type='password'                       ");
+		out.println("									class='form-control' name='password'                              ");
+		out.println("									placeholder='Enter Password'>                                     ");
+		out.println("							</div>                                                                    ");
+		out.println("						</div>                                                                        ");
+		out.println("						<br>                                                                          ");
+		out.println("						<div class=' row'>                                                            ");
+		out.println("							<button type='button'                                                     ");
+		out.println("								class='offset-1 col-md-5 btn btn-outline-dark'                        ");
+		out.println("								style='border-radius: 3px 0 0 3px; border-right: 0'>Reset</button>    ");
+		out.println("							<button type='submit' class='col-md-5 btn btn-outline-info'               ");
+		out.println("								style='border-radius: 0 3px 3px 0;'>Login</button>                    ");
+		out.println("						</div>                                                                        ");
+		out.println("						<br>                                                                          ");
+		out.println("						<div class=' row'>                                                            ");
+		out.println("							<a href='createemployee.html'                                             ");
+		out.println("								class='offset-1 col-md-5 btn btn-outline-success'                     ");
+		out.println("								style='border-radius: 3px 0 0 3px; border-right: 0'>Create            ");
+		out.println("								Account</a> <a href='forgotpassword.html'                             ");
+		out.println("								class='col-md-5 btn btn-outline-success'                              ");
+		out.println("								style='border-radius: 0 3px 3px 0;'>Forgot Password</a>               ");
+		out.println("						</div>                                                                        ");
+		out.println("                                                                                                     ");
+		out.println("					</form>                                                                           ");
+		out.println("                                                                                                     ");
+		out.println("				</div>                                                                                ");
+		out.println("			</div>                                                                                    ");
+		out.println("		</div>                                                                                        ");
+		out.println("	</div>                                                                                            ");
+		out.println("</body>                                                                                              ");
+		out.println("</html>                                                                                              ");
+	}
+
+}
