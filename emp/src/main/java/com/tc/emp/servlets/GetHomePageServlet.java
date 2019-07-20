@@ -18,22 +18,24 @@ import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/home1")
+public class GetHomePageServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-//		getServletContext().removeAttribute("bean");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if (session != null) {
-			session.invalidate();
-}
-			PrintWriter out = resp.getWriter();
+			EmployeeInfoBean bean = (EmployeeInfoBean) session.getAttribute("data");
 
-			out.println("<h1 style='color:green'>Thanks For Visiting !!!</h1>");
-			out.println("<br><br>");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
-			dispatcher.include(req, resp);
-		
+			RequestDispatcher dispatcher = req.getRequestDispatcher("./homepage");
+			req.setAttribute("bean", bean);
+			dispatcher.forward(req, resp);
+		}
 	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
+
 }

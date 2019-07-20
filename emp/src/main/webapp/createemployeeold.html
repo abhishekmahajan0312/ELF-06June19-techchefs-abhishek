@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet"
+	href="./font/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 card"
+				style="background-color: lightgoldenrodyellow">
+				<div class="card-body">
+					<h4 class="text-center border-bottom">EMPLOYEE INFORMATION</h4>
+					<br>
+					<form
+						action="./createEmployee" method="post">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>ID</label> <input class="form-control" type="number"
+											name="id" placeholder="Please Enter ID" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Password</label> <input class="form-control" type="password"
+											name="password" placeholder="Please Enter Password" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Confirm Password</label> <input class="form-control" type="password"
+											 placeholder="Please Confirm Password" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Name</label> <input class="form-control" type="text"
+											name="name" placeholder="Please Enter Name" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Age</label> <input class="form-control" type="number"
+											name="age" placeholder="Please Enter Age" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Gender</label> <select class="form-control"
+											name="gender">
+											<option disabled selected>Select Gender</option>
+											<option value="male">Male</option>
+											<option value="female">Female</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Salary</label> <input class="form-control" type="text"
+											name="salary" placeholder="Please Enter Salary" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Phone Number</label> <input class="form-control"
+											type="number" name="phone"
+											placeholder="Please Enter Phone Number" />
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Joining Date</label> <input class="form-control"
+											type="date" name=joining_date
+											placeholder="Please Enter Joining Date" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Account Number</label> <input class="form-control"
+											type="number" name="account_number"
+											placeholder="Please Enter Account Number" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Email Id</label> <input class="form-control"
+											type="email" name="email" placeholder="Please Enter Email ID" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Designation</label> <input class="form-control"
+											type="text" name="designation"
+											placeholder="Please Enter Designation" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>DOB</label> <input class="form-control" type="date"
+											name=dob placeholder="Please Enter DOB" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Department ID</label> <input class="form-control"
+											type="number" name="department_id"
+											placeholder="Please Enter Department ID" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label>Manager ID</label> <input class="form-control"
+											type="number" name="manager_id"
+											placeholder="Please Enter Manager ID" />
+									</div>
+								</div>
+								<br>
+								<div class=" d-flex flex-row mt-2">
+									<button type="button"
+										class="p-1 offset-1 col-md-5 btn btn-outline-dark"
+										style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
+									<button type="submit" class="p-1 col-md-5 btn btn-outline-info"
+										style="border-radius: 0 3px 3px 0;">Submit</button>
+
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

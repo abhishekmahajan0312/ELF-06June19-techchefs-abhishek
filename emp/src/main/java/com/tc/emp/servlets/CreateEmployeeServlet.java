@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tc.emp.bean.EmployeeInfoBean;
+import com.tc.emp.bean.EmployeeOtherInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
@@ -46,6 +47,21 @@ public class CreateEmployeeServlet extends HttpServlet {
 			empInf.setDepartmentId(Integer.parseInt(req.getParameter("department_id")));
 			empInf.setManagerId(Integer.parseInt(req.getParameter("manager_id")));
 
+			EmployeeOtherInfoBean empOthInfo = new EmployeeOtherInfoBean();
+			empOthInfo.setId(Integer.parseInt(req.getParameter("id")));
+			empOthInfo.setPan(req.getParameter("pan"));
+			empOthInfo.setMarried(Boolean.parseBoolean(req.getParameter("isMarried")));
+			empOthInfo.setBloodGrp(req.getParameter("bloodGroup"));
+			empOthInfo.setChallenged(Boolean.parseBoolean(req.getParameter("isChallenged")));
+			empOthInfo.setEmergencyContactNumber(Long.parseLong(req.getParameter("emergencyCN")));
+			empOthInfo.setEmergencyContactPerson(req.getParameter("id"));
+			empOthInfo.setNationality(req.getParameter("id"));
+			empOthInfo.setReligion(req.getParameter("id"));
+			empOthInfo.setFatherNM(req.getParameter("id"));
+			empOthInfo.setMotherNM(req.getParameter("id"));
+			empOthInfo.setSpouseNM(req.getParameter("id"));
+			empOthInfo.setPassport(req.getParameter("id"));
+			empOthInfo.setAdhar(Long.parseLong(req.getParameter("account_number")));
 			
 			EmployeeDao dao = EmployeeDAOFactory.getInstance();
 
