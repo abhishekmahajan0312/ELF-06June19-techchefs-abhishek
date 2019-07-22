@@ -17,10 +17,10 @@ import lombok.Data;
 @Entity
 @Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@PrimaryKeyJoinColumn
-//	private EmployeeOtherInfoBean otherInfo;
-//	
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private EmployeeOtherInfoBean otherInfo;
+
 	@Id
 	@Column(name = "id")
 	private int id;

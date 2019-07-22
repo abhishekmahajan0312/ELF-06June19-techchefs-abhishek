@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
+	<!-- bean definitions here -->
 	<bean id="messageBean" class="com.tc.springcore.beans.MessageBean">
-		<property name="message" value="Hello to Spring!"></property>
+		<property name="message" value="${message}"></property>
+	</bean> 
+	<bean id="courseBean" class="com.tc.springcore.beans.CourseBean">
+		<property name="courseID" value="${courseid}"></property>
+		<property name="courseName" value="${coursename}"></property>
+		<property name="facultyName" value="${facultyname}"></property>
 	</bean>
-	<bean id="employeeInfoBean1" class="com.tc.springcore.beans.EmployeeInfoBean">
+
+	<bean id="employeeInfoBean1"
+		class="com.tc.springcore.beans.EmployeeInfoBean">
 		<property name="id" value="101"></property>
 		<property name="name" value="Abhishek"></property>
 	</bean>
-	<bean id="employeeInfoBean2" class="com.tc.springcore.beans.EmployeeInfoBean">
+	<bean id="employeeInfoBean2"
+		class="com.tc.springcore.beans.EmployeeInfoBean">
 		<property name="id" value="102"></property>
 		<property name="name" value="Megha"></property>
 	</bean>
+	 <bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> <!-- This method is for including multiple property files in one xml -->
+		<property name="locations">
+			<list>
+				<value>messageProperty.properties</value>
+				<value>courseProperty.properties</value>
+			</list>
+		</property>
+	</bean>
+	 <!-- <bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  To give single property file we can use this method but this can't be used for multiple property files
+		<property name="locations" value="courseProperty.properties"></property>
+	</bean>  -->
+	<!-- <bean class="com.tc.springcore.postprocessors.MyBeanPostProcessor"/> -->
+	<bean
+		class="com.tc.springcore.postprocessors.MyBeanFactoryPostProcessor" />
 </beans>

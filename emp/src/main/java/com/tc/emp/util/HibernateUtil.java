@@ -6,12 +6,13 @@ import org.hibernate.cfg.Configuration;
 
 import com.tc.emp.bean.DepartmentInfoBean;
 import com.tc.emp.bean.EmployeeInfoBean;
+import com.tc.emp.bean.EmployeeOtherInfoBean;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 
 	private static SessionFactory buildSessionFactory() {
-		return new Configuration().configure().addAnnotatedClass(EmployeeInfoBean.class).addAnnotatedClass(DepartmentInfoBean.class).buildSessionFactory();
+		return new Configuration().configure().addAnnotatedClass(EmployeeInfoBean.class).addAnnotatedClass(DepartmentInfoBean.class).addAnnotatedClass(EmployeeOtherInfoBean.class).buildSessionFactory();
 
 	}
 

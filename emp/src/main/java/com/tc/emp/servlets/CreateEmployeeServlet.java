@@ -54,15 +54,15 @@ public class CreateEmployeeServlet extends HttpServlet {
 			empOthInfo.setBloodGrp(req.getParameter("bloodGroup"));
 			empOthInfo.setChallenged(Boolean.parseBoolean(req.getParameter("isChallenged")));
 			empOthInfo.setEmergencyContactNumber(Long.parseLong(req.getParameter("emergencyCN")));
-			empOthInfo.setEmergencyContactPerson(req.getParameter("id"));
-			empOthInfo.setNationality(req.getParameter("id"));
-			empOthInfo.setReligion(req.getParameter("id"));
-			empOthInfo.setFatherNM(req.getParameter("id"));
-			empOthInfo.setMotherNM(req.getParameter("id"));
-			empOthInfo.setSpouseNM(req.getParameter("id"));
-			empOthInfo.setPassport(req.getParameter("id"));
-			empOthInfo.setAdhar(Long.parseLong(req.getParameter("account_number")));
-			
+			empOthInfo.setEmergencyContactPerson(req.getParameter("emergencyNM"));
+			empOthInfo.setNationality(req.getParameter("nationality"));
+			empOthInfo.setReligion(req.getParameter("religion"));
+			empOthInfo.setFatherNM(req.getParameter("fname"));
+			empOthInfo.setMotherNM(req.getParameter("mname"));
+			empOthInfo.setSpouseNM(req.getParameter("sname"));
+			empOthInfo.setPassport(req.getParameter("passport"));
+			empOthInfo.setAdhar(Long.parseLong(req.getParameter("adhar")));
+			empInf.setOtherInfo(empOthInfo);
 			EmployeeDao dao = EmployeeDAOFactory.getInstance();
 
 			boolean result = dao.createEmployeeInfo(empInf);

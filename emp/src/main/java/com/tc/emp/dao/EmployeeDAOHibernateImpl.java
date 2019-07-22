@@ -84,7 +84,7 @@ public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 			return true;
 		} catch (Exception e) {
 
-			log.severe(Arrays.toString(e.getStackTrace()));
+			e.printStackTrace();
 			if (txn != null) {
 				txn.rollback();
 			}
