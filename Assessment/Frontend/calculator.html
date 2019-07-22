@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='bootstrap.min.css'>
+
+
+</head>
+
+<body>
+
+    <div class="container text-center">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-4 offset-4">
+                    <div class="row ">
+                        <div class="col-md-12 form-group">
+                            <form name="calc">
+                                <input type="text" class="screen text-right" name="result" id="result" readonly>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button id="allClear" type="button" class="col-md-3 btn btn-danger"
+                            onclick="clearScreen()">C</button>
+                        <button id="clear" type="button" class="col-md-3 btn btn-warning" onclick="clearScreen()">
+                            <</button> <button id="/" type="button" class="col-md-3 btn btn-info"
+                                onclick="appendToDisplay(this.id)">/
+                        </button>
+                        <button id="*" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">X</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button id="7" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">7</button>
+                        <button id="8" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">8</button>
+                        <button id="9" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">9</button>
+                        <button id="-" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">-</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button id="4" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">4</button>
+                        <button id="5" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">5</button>
+                        <button id="6" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">6</button>
+                        <button id="+" type="button" class="col-md-3 btn btn-info"
+                            onclick="appendToDisplay(this.id)">+</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <button id="1" type="button" class="col-md-4 btn btn-info"
+                                    onclick="appendToDisplay(this.id)">1</button>
+                                <button id="2" type="button" class="col-md-4 btn btn-info"
+                                    onclick="appendToDisplay(this.id)">2</button>
+                                <button id="3" type="button" class="col-md-4 btn btn-info"
+                                    onclick="appendToDisplay(this.id)">3</button>
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button id="0" type="button" class="col-md-8 btn btn-info"
+                                    onclick="appendToDisplay(this.id)">0</button>
+                                <button id="." type="button" class="col-md-4 btn btn-info"
+                                    onclick="appendToDisplay(this.id)">.</button>
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="equals" type="button" class="h-100 btn btn-success"
+                                onclick="calculate()">=</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='calculator.js'></script>
+
+
+</body>
+
+</html>
