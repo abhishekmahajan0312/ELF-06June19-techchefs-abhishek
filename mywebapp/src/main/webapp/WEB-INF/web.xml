@@ -16,16 +16,17 @@
   		<param-value>Gabbar Singh</param-value>
   	</init-param>
   </servlet>
-  <!-- <servlet>
-  	<servlet-name>EmployeeSearchServlet</servlet-name>
-  	<servlet-class>com.tc.mywebapp.servlets.EmployeeSearchServlet</servlet-class>
-  </servlet> -->
+  <servlet>
+  	<servlet-name>MyJsp</servlet-name>
+  	<jsp-file>/MyFirstJSP.jsp</jsp-file>
+  </servlet> 
+  
   <servlet-mapping>
   	<servlet-name>MyFirstServlet</servlet-name>
   	<url-pattern>/currentDate</url-pattern>
   </servlet-mapping>
-  <!-- <servlet-mapping>
-  	<servlet-name>EmployeeSearchServlet</servlet-name>
-  	<url-pattern>/searchEmployee</url-pattern>
-  </servlet-mapping> -->
+  <servlet-mapping>
+  	<servlet-name>MyJsp</servlet-name>
+  	<url-pattern>/currentDateJsp</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		} else
 
 		{
-			String url = "./loginfail";
+			String url = "./loginfail?msg=Invalid Username and Password!!!";
 			forwardRequest(url, empInf, req, resp);
 		}
 

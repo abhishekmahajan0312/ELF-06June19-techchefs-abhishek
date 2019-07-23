@@ -17,7 +17,7 @@ import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
-@WebServlet("/loginfail")
+//@WebServlet("/loginfail")
 public class LoginFailServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

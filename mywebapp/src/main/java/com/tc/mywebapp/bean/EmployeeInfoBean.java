@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employee_info")
+//@Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 	@Id
 	@Column(name = "id")

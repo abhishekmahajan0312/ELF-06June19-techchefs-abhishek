@@ -20,7 +20,5 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 		System.out.println(propertyValues.get("message"));
 		propertyValues.add("message", "Message from my BFPP1");
 		System.out.println(propertyValues.get("message"));
-		
 	}
-	
 }

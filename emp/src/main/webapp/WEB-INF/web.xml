@@ -4,8 +4,26 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>HomeJsp</servlet-name>
+  	<jsp-file>/Home.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginFail</servlet-name>
+  	<jsp-file>/LoginFail.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HomeJsp</servlet-name>
+  	<url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginFail</servlet-name>
+  	<url-pattern>/loginfail</url-pattern>
+  </servlet-mapping>
   <session-config>
   <!-- Time in Min -->
   	<session-timeout>0</session-timeout>
   </session-config>
+  
+  
 </web-app>

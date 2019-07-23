@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="hardDisk"
+		class="com.tc.springcoreassignment.interfaces.HardDisk" primary="true">
+		<property name="capacity" value="500GB"></property>
+		<property name="writingSpeed" value="4GB/s"></property>
+		<property name="readingSpeed" value="2GB/s"></property>
+	</bean>
+
+	<bean id="penDrive"
+		class="com.tc.springcoreassignment.interfaces.PenDrive" >
+		<property name="capacity" value="16GB"></property>
+		<property name="writingSpeed" value="200MB/s"></property>
+		<property name="readingSpeed" value="150MB/s"></property>
+	</bean>
+	<bean id="dell"
+		class="com.tc.springcoreassignment.interfaces.Dell" autowire="byType">
+		<property name="brand" value="Dell Inspiron"></property>
+		<property name="color" value="Silver"></property>
+		<property name="cost" value="50000"></property>
+		<property name="weight" value="2Kg"></property>
+		<property name="ram" value="4GB"></property>
+		<property name="os" value="Windows"></property></bean>
+	<bean id="hp"
+		class="com.tc.springcoreassignment.interfaces.HP" >
+		<property name="brand" value="Hp Elite Book"></property>
+		<property name="color" value="Golden"></property>
+		<property name="cost" value="27000"></property>
+		<property name="weight" value="1.5Kg"></property>
+		<property name="ram" value="6GB"></property>
+		<property name="os" value="Ubuntu"></property>
+	</bean>
+</beans>

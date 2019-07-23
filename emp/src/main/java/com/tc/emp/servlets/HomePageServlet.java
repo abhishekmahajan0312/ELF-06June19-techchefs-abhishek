@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.tc.emp.bean.EmployeeInfoBean;
 
-@WebServlet("/home")
+//@WebServlet("/home")
 public class HomePageServlet extends HttpServlet {
 
 	@Override
