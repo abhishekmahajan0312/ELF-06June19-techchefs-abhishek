@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
-@WebServlet("/loginpage")
+@WebServlet("/myapp/loginpage")
 public class LoginPageServlet extends HttpServlet{
 
 	@Override
@@ -24,19 +24,15 @@ public class LoginPageServlet extends HttpServlet{
 		
 		Cookie dummyCookie = new Cookie("dummyCookie", "CheckCookiesEnabled");
 		resp.addCookie(dummyCookie);
-		PrintWriter out = resp.getWriter();
 		HttpSession session = req.getSession(false);
+		System.out.println(req.getRequestURI());
 		if(session == null) {
-			//Invalid Session; Generate Login Page
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
-			dispatcher.include(req, resp);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("./myapp/loginjsp");
+			
+			dispatcher.forward(req, resp);
 		}
 		else {
-			EmployeeDao dao = EmployeeDAOFactory.getInstance();
-			EmployeeInfoBean bean = dao.getEmployeeInfo(req.getParameter("id"));
-			if(bean!=null) {
-				req.setAttribute("bean", bean);
-			}
+			EmployeeInfoBean bean = (EmployeeInfoBean)session.getAttribute("data");
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/home");
 			dispatcher.forward(req, resp);
 		}

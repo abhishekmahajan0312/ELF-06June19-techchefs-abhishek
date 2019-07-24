@@ -22,20 +22,10 @@
 
 	<%
 		try {
-			/* PrintWriter out = resp.getWriter();
-			if (session == null) {
-				// Invalid Session;
-				out.println("<h1 style='color:red'>Invalid Session!!! Pls Login</h1>");
-				out.println("<br><br>");
-				RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
-				dispatcher.include(req, resp);
-			} else { */
-
 			EmployeeInfoBean bean = (EmployeeInfoBean) request.getAttribute("bean");
-			/* if (bean == null) {
-				bean = (EmployeeInfoBean) session.getAttribute("bean");
-			
-			} */
+			if (bean == null) {
+				bean = (EmployeeInfoBean) session.getAttribute("data");
+			}
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date joiningDate;
 			Date dob;
@@ -43,21 +33,26 @@
 			joiningDate = format.parse(bean.getJoiningDate().toString());
 			dob = format.parse(bean.getDob().toString());
 	%>
-
-
 	<div class="container">
 		<div class="row navbar navbar-inverse">
 			<div class="col-md-2">
-				<a href="./home"><img src="1.jpg"
+				<a href="./home"><img src="1.png"
 					style="width: 50px; height: 50px;"></a>
 			</div>
-			<div class="col-md-8">
-				<input type="search" class="form-control">
+
+			<div class='col-md-8'>
+				<form action='./search' method='GET'>
+
+					<input type='search' name='q'
+						placeholder='Enter Employee ID or Name' class='form-control'>
 			</div>
-			<div class="col-md-1">
-				<i class="fa fa-search"
-					style="font-size: 25px; color: rgba(110, 104, 104, 0.8); position: relative; left: -60px;"></i>
+
+			<div class='col-md-1'>
+				<button type='submit' class='fa fa-search  border-0'
+					style='font-size: 25px; background-color: rgba(255, 255, 255, 0); color: rgba(110, 104, 104, 0.8); position: relative; left: -75px;'></button>
+				</form>
 			</div>
+
 			<div class="col-md-1">
 				<a href="./logout">Logout</a>
 			</div>
@@ -154,7 +149,6 @@
 	</div>
 
 	<%
-		/* } */
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

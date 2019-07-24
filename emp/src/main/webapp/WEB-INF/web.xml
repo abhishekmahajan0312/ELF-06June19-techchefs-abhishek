@@ -12,13 +12,21 @@
   	<servlet-name>LoginFail</servlet-name>
   	<jsp-file>/LoginFail.jsp</jsp-file>
   </servlet>
+  <servlet>
+  	<servlet-name>Login</servlet-name>
+  	<jsp-file>/login.jsp</jsp-file>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HomeJsp</servlet-name>
-  	<url-pattern>/home</url-pattern>
+  	<url-pattern>/myapp/home</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LoginFail</servlet-name>
-  	<url-pattern>/loginfail</url-pattern>
+  	<url-pattern>/myapp/loginfail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Login</servlet-name>
+  	<url-pattern>/myapp/loginjsp</url-pattern>
   </servlet-mapping>
   <session-config>
   <!-- Time in Min -->

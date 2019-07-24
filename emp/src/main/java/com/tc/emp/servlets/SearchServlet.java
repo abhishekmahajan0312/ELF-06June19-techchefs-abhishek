@@ -36,7 +36,7 @@ public class SearchServlet extends HttpServlet {
 			//Invalid Session;
 			out.println("<h1 style='color:red'>Invalid Session!!! Pls Login</h1>");
 			out.println("<br><br>");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 			dispatcher.include(req, resp);
 		}
 		else {

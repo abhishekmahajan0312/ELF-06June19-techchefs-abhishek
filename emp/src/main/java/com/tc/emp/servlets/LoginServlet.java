@@ -19,19 +19,20 @@ import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
-@WebServlet("/login")
+@WebServlet("/myapp/login")
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//Check Cookies are Disabled
-		
-		if(req.getCookies() == null) {
+
+		// Check Cookies are Disabled
+
+		if (req.getCookies() == null) {
 			req.getRequestDispatcher("cookiesdisabled.html").include(req, resp);
 			return;
 		}
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
+		String url=null; 
 		EmployeeDao dao = EmployeeDAOFactory.getInstance();
 		EmployeeInfoBean empInf = dao.getEmployeeInfo(id);
 		if (empInf != null && empInf.getPassword().equals(password)) {
@@ -40,25 +41,13 @@ public class LoginServlet extends HttpServlet {
 			Cookie cookie = new Cookie("JSESSIONID", session.getId());
 			cookie.setMaxAge(Integer.MAX_VALUE);
 			resp.addCookie(cookie);
-			String url = "./home";
-			
-			forwardRequest(url, empInf, req, resp);
+			url = "./home";
 		} else
-
 		{
-			String url = "./loginfail?msg=Invalid Username and Password!!!";
-			forwardRequest(url, empInf, req, resp);
+			url = "login.jsp?msg=Invalid Username and Password!!!";
 		}
-
-	}
-
-	private void forwardRequest(String url, EmployeeInfoBean empInf, HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-//		if (empInf != null) {
-//			getServletContext().setAttribute("bean", empInf);
-//		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
-
 		dispatcher.forward(req, resp);
 	}
+
 }

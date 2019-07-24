@@ -28,11 +28,7 @@ public class LogoutServlet extends HttpServlet {
 		if (session != null) {
 			session.invalidate();
 }
-			PrintWriter out = resp.getWriter();
-
-			out.println("<h1 style='color:green'>Thanks For Visiting !!!</h1>");
-			out.println("<br><br>");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp?msg=Logout Successful");
 			dispatcher.include(req, resp);
 		
 	}
