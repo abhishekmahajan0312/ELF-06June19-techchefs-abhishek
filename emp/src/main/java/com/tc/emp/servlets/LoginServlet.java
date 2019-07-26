@@ -19,7 +19,7 @@ import com.tc.emp.bean.EmployeeInfoBean;
 import com.tc.emp.dao.EmployeeDAOFactory;
 import com.tc.emp.dao.EmployeeDao;
 
-@WebServlet("/myapp/login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("data", empInf);
 			Cookie cookie = new Cookie("JSESSIONID", session.getId());
-			cookie.setMaxAge(Integer.MAX_VALUE);
+			cookie.setMaxAge(7*24*60*60);
 			resp.addCookie(cookie);
 			url = "./home";
 		} else

@@ -66,21 +66,14 @@ public class CreateEmployeeServlet extends HttpServlet {
 			EmployeeDao dao = EmployeeDAOFactory.getInstance();
 
 			boolean result = dao.createEmployeeInfo(empInf);
+			String url = null;
 			if (!result) {
-				out.print("<HTML>");
-				out.print("<BODY>");
-				out.print("<h1><span style=\"color: red;\">Employee Not Added Successfully !!</span></h1>");
-				out.print("</BODY>");
-				out.print("</HTML>");
+				url = "login.jsp?msg=Employee Insertion Failed!!";
 
 			} else {
-				out.print("<HTML>");
-				out.print("<BODY>");
-				out.print("<h1><span style=\"color: green;\">Employee Added Successfully...</span></h1>");
-				out.print("</BODY>");
-				out.print("</HTML>");
-
+				url = "login.jsp?msg=Employee added Successfully!!";
 			}
+			req.getRequestDispatcher(url).forward(req, resp);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

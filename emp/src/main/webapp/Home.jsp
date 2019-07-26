@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -67,7 +66,8 @@
 					<table class="table table-striped">
 						<tr>
 							<td>Name</td>
-							<td><%=bean.getName()%></td>
+<%-- 							<td><%=bean.getName()%></td> --%>
+							<td>${sessionScope.data.name}</td>
 						</tr>
 						<tr>
 							<td>Age</td>

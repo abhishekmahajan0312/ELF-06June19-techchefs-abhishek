@@ -23,15 +23,10 @@ public class GetEmployeeServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter out = resp.getWriter();
+		// Validate The Session
 		HttpSession session = req.getSession(false);
-
 		if (session == null) {
-			// Invalid Session;
-			out.println("<h1 style='color:red'>Invalid Session!!! Pls Login</h1>");
-			out.println("<br><br>");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp?msg=Invalid Session!!! Pls Login");
 			dispatcher.include(req, resp);
 		} else {
 

@@ -77,7 +77,7 @@
 						</div>
 						<br>
 						<div class=" row">
-							<button type="button"
+							<button type="reset"
 								class="offset-1 col-md-5 btn btn-outline-dark"
 								style="border-radius: 3px 0 0 3px; border-right: 0">Reset</button>
 							<button type="submit" class="col-md-5 btn btn-outline-info"
@@ -85,7 +85,7 @@
 						</div>
 						<br>
 						<div class=" row">
-							<a href="createemployee.html"
+							<a href="createemployee.jsp"
 								class="offset-1 col-md-5 btn btn-outline-success"
 								style="border-radius: 3px 0 0 3px; border-right: 0">Create
 								Account</a> <a href="forgotpassword.html"

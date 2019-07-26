@@ -35,7 +35,7 @@ public class PrepareDataUtil {
 			empInf.setPassword("12345");
 			
 			EmployeeOtherInfoBean empOthInfo = new EmployeeOtherInfoBean();
-			empOthInfo.setId(id);
+//			empOthInfo.setId(id);
 			empOthInfo.setPan("DPDJF9988L");
 			empOthInfo.setMarried(true);
 			empOthInfo.setBloodGrp("B+");

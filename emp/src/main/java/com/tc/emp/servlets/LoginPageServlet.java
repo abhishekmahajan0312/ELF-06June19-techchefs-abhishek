@@ -1,8 +1,6 @@
 package com.tc.emp.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tc.emp.bean.EmployeeInfoBean;
-import com.tc.emp.dao.EmployeeDAOFactory;
-import com.tc.emp.dao.EmployeeDao;
-@WebServlet("/myapp/loginpage")
+@WebServlet("/loginpage")
 public class LoginPageServlet extends HttpServlet{
 
 	@Override
@@ -25,17 +21,12 @@ public class LoginPageServlet extends HttpServlet{
 		Cookie dummyCookie = new Cookie("dummyCookie", "CheckCookiesEnabled");
 		resp.addCookie(dummyCookie);
 		HttpSession session = req.getSession(false);
-		System.out.println(req.getRequestURI());
-		if(session == null) {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("./myapp/loginjsp");
-			
-			dispatcher.forward(req, resp);
+		
+		if(session == null || session.getAttribute("data")==null) {
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
 		else {
-			EmployeeInfoBean bean = (EmployeeInfoBean)session.getAttribute("data");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/home");
-			dispatcher.forward(req, resp);
+			req.getRequestDispatcher("/home").forward(req, resp);
 		}
-	
 	}//End Of doGet()
 }//End of Class
