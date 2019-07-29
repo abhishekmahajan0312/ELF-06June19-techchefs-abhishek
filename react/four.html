@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="react.production.min.js"></script>
+	<script src="react-dom.production.min.js"></script>
+	<script src="babel.min.js"></script>
+</head>
+
+<body>
+	<div id="mydiv"></div>
+	<script type="text/babel">
+class Textbox extends React.Component{
+	
+	constructor(props){
+		super(props);
+		console.log("constructor");
+		this.state = {
+			display: "Hello"
+		};
+		this.changeValue = this.changeValue.bind(this);
+	}
+
+	// Display = ()=>{
+	// 	console.log("in display");
+		
+		
+	// }
+	changeValue=()=>{
+		this.setState({
+			display: "Abhishek"
+		})
+	}
+
+	componentDidMount(){
+		console.log("CDM");
+	}
+
+	render()// This function renders the html to the browser and called by ReactDOM.render function
+	{
+		console.log("render");
+		return (
+			<div>
+		<input type="text" id="tb" value={this.state.display}/>
+		<br/>
+		<input type="button" onClick={this.changeValue} value="Submit"/>
+		</div>)
+	}
+}
+
+ReactDOM.render(<Textbox />,document.getElementById("mydiv")) 
+
+</script>
+</body>
+
+</html>

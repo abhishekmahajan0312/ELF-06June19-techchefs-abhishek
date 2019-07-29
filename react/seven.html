@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+    console.log("constructor");
+    // this.changeColor = this.changeColor.bind(this);
+  }
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log("getDSFP");
+    
+  //   return {favoritecolor: props.favcol };
+  // }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  changeColor = () => {
+    console.log("changeColor");
+    this.setState({favoritecolor: "blue"});
+  }
+  render() {
+    console.log("render");
+    
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <button type="button" onClick={this.changeColor}>Change color</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Header />, document.getElementById('root'));
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="react.production.min.js"></script>
+	<script src="react-dom.production.min.js"></script>
+	<script src="babel.min.js"></script>
+</head>
+
+<body>
+<div id="mydiv"></div>
+<div id="mydiv2"></div>
+<script type="text/babel">
+class Hello extends React.Component{
+	constructor(props)// This will be called first to initialise the class and variables
+	{
+		super(props);
+		//this.props.text = "react"
+		//console.log('test',props1.text1);
+		this.state = {
+			display: props.text != undefined ? props.text : "Good Morning"
+		};
+	}
+	render()// This function renders the html to the browser and called by ReactDOM.render function
+	{
+		//return <h1> Hello World! {this.props.text}</h1>
+		return <h1> Hello World! {this.state.display}</h1>
+	}
+}
+class Greet extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			display: props.greet != undefined ? props.greet : "Abhishek"
+		};
+	}
+	render(){
+		return <h2> Hello {this.state.display}</h2>
+	}	
+}
+ReactDOM.render(<Hello text="hello"/>,document.getElementById("mydiv")) 
+ReactDOM.render(<Greet greet="Java Class"/>,document.getElementById("mydiv2")) 
+
+</script>
+</body>
+</html>
