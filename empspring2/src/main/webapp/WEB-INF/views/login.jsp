@@ -35,6 +35,7 @@
 				<div class="card-body">
 					<h4 class="text-center border-bottom">Employee Login</h4>
 					<br>
+				
 					<div class='alert alert-warning alert-dismissible fade show'
 						role='alert'>
 						${msg}
@@ -78,7 +79,7 @@
 						</div>
 						<br>
 						<div class=" row">
-							<a href="createemployee.jsp"
+							<a href="createEmployeePage"
 								class="offset-1 col-md-5 btn btn-outline-success"
 								style="border-radius: 3px 0 0 3px; border-right: 0">Create
 								Account</a> <a href="forgotpassword.html"

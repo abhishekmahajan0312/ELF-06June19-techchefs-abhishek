@@ -23,9 +23,9 @@ public class EmployeeOtherInfoBean {
 	@Column(name = "ischallenged")
 	boolean isChallenged;
 	@Column(name = "emergency_contact_number")
-	long emergencyContactNumber;
+	long emergencyCN;
 	@Column(name = "emergency_contact_person")
-	String emergencyContactPerson;
+	String emergencyCP;
 	@Column(name = "nationality")
 	String nationality;
 	@Column(name = "religion")
