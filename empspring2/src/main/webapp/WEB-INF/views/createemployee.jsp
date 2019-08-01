@@ -29,7 +29,7 @@
 	<div class="container">
 		<h2>EMPLOYEE REGISTRATION</h2>
 		<p>Click on the panel to EXPAND</p>
-		<form action="./createEmployee" method="post">
+		<form action="./createEmployee" method="get">
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading">
