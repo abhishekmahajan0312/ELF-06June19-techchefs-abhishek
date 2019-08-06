@@ -22,12 +22,13 @@
 	<div class='container'>
 		<div class='row navbar navbar-inverse'>
 			<div class='col-md-2'>
-				<a href='./home'><img src='1.png'
+				<a href='../validate/getHomePage'><img src='1.png'
 					style='width: 50px; height: 50px;'></a>
 			</div>
 			<div class='col-md-8'>
-				<form action='./search'>
-					<input type='search' name='search'
+				<form action='../validate/searchEmployee'>
+					 <input
+						type='search' name='q'
 						placeholder='Enter Employee ID or Name' class='form-control'>
 			</div>
 			<div class='col-md-1'>

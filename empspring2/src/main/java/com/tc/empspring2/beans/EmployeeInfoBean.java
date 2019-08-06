@@ -12,6 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Data;
 
@@ -39,7 +40,7 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "phone")
 	private long phone;
 	@Column(name = "joining_date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(iso = ISO.DATE)
 	private Date joiningDate;
 	@Column(name = "account_number")
 	private long accountNumber;
@@ -48,7 +49,7 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "designation")
 	private String designation;
 	@Column(name = "dob")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(iso = ISO.DATE)
 	private Date dob;
 	@Column(name = "dept_id")
 	private int departmentId;
