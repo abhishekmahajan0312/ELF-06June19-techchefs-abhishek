@@ -1,87 +1,22 @@
 package com.tc.hibernatemapping;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
-import javax.print.attribute.standard.MediaSize.Other;
-
-import com.tc.hibernatemapping.bean.manytoone.EmployeeAddressInfoBean;
-import com.tc.hibernatemapping.bean.manytoone.EmployeeAddressPKBean;
-import com.tc.hibernatemapping.bean.manytoone.EmployeeEducationInfoBean;
-import com.tc.hibernatemapping.bean.manytoone.EmployeeEducationPKBean;
-import com.tc.hibernatemapping.bean.manytoone.EmployeeExperienceInfoBean;
-import com.tc.hibernatemapping.bean.manytoone.EmployeeExperiencePKBean;
 import com.tc.hibernatemapping.bean.manytoone.TrainingInfoBean;
-import com.tc.hibernatemapping.bean.onetoone.EmployeeOtherInfoBean;
 import com.tc.hibernatemapping.bean.primary.EmployeeInfoBean;
 import com.tc.hibernatemapping.model.HibernateImpl;
 
 public class App 
 {
-    public static void main( String[] args )
-    {
-    	try {
-			EmployeeInfoBean empInf1 = new EmployeeInfoBean();
-			empInf1.setId(4);
-			empInf1.setName("Akshay");
-			empInf1.setAge(25);
-			empInf1.setGender("male");
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = format.parse("2012-12-13");
-
-			empInf1.setSalary(20000);
-			empInf1.setPhone(9876543210l);
-			empInf1.setJoiningDate(date);
-			empInf1.setAccountNumber(506520102044558l);
-			empInf1.setEmail("akshay@gmail.com");
-			empInf1.setDesignation("Software Engineer");
-
-			empInf1.setDob(format.parse("1995-02-12"));
-			empInf1.setDeptId(1);
-			empInf1.setMngrId(5);
+	
+	public static void main(String[] args) {
+			HibernateImpl impl = new HibernateImpl();
+			EmployeeInfoBean empInf1 = impl.getEmployeeInfoBean(2);
 			
-			EmployeeInfoBean empInf2 = new EmployeeInfoBean();
-			empInf2.setId(5);
-			empInf2.setName("Akshay");
-			empInf2.setAge(25);
-			empInf2.setGender("male");
-			format = new SimpleDateFormat("yyyy-MM-dd");
-			date = format.parse("2012-12-13");
-
-			empInf2.setSalary(20000);
-			empInf2.setPhone(9876543210l);
-			empInf2.setJoiningDate(date);
-			empInf2.setAccountNumber(506520102044558l);
-			empInf2.setEmail("akshay@gmail.com");
-			empInf2.setDesignation("Software Engineer");
-
-			empInf2.setDob(format.parse("1995-02-12"));
-			empInf2.setDeptId(1);
-			empInf2.setMngrId(5);
-			
+			EmployeeInfoBean empInf2 = impl.getEmployeeInfoBean(3);
 			
 			EmployeeInfoBean empInf3 = new EmployeeInfoBean();
-			empInf3.setId(6);
-			empInf3.setName("Akshay");
-			empInf3.setAge(25);
-			empInf3.setGender("male");
-			format = new SimpleDateFormat("yyyy-MM-dd");
-			date = format.parse("2012-12-13");
-
-			empInf3.setSalary(20000);
-			empInf3.setPhone(9876543210l);
-			empInf3.setJoiningDate(date);
-			empInf3.setAccountNumber(506520102044558l);
-			empInf3.setEmail("akshay@gmail.com");
-			empInf3.setDesignation("Software Engineer");
-
-			empInf3.setDob(format.parse("1995-02-12"));
-			empInf3.setDeptId(1);
-			empInf3.setMngrId(5);
+			empInf3.setId(4);
 			
 			TrainingInfoBean trainingInfoBean = new TrainingInfoBean();
 			trainingInfoBean.setCourseId(101);
@@ -89,9 +24,100 @@ public class App
 			trainingInfoBean.setCourseType("Full Time");
 			trainingInfoBean.setDuration("6 months");
 			trainingInfoBean.setInfoBeans(Arrays.asList(empInf1,empInf2,empInf3));
-			HibernateImpl impl = new HibernateImpl();
 			impl.createTraining(trainingInfoBean);
-			
+
+	}
+//	public static void main(String[] args) {
+//		
+//		HibernateImpl impl = new HibernateImpl();
+//		EmployeeInfoBean bean = impl.getEmployeeInfoBean(1);
+//		EmployeeInfoBean bean1 = new EmployeeInfoBean();
+//		bean1.setId(2);
+//		bean1.setName("XYZ");
+//		bean1.setDesignation("SD");
+//		bean1.setMngrId(bean);
+//		
+//		EmployeeInfoBean bean2 = new EmployeeInfoBean();
+//		bean2.setId(3);
+//		bean2.setName("PQR");
+//		bean2.setDesignation("SD");
+//		bean2.setMngrId(bean);
+//		
+//		impl.createEmployee(bean1);
+//		impl.createEmployee(bean2);
+//	}
+	
+	
+//    public static void main( String[] args )
+//    {
+//    	try {
+//			EmployeeInfoBean empInf1 = new EmployeeInfoBean();
+//			empInf1.setId(4);
+//			empInf1.setName("Akshay");
+//			empInf1.setAge(25);
+//			empInf1.setGender("male");
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//			Date date = format.parse("2012-12-13");
+//
+//			empInf1.setSalary(20000);
+//			empInf1.setPhone(9876543210l);
+//			empInf1.setJoiningDate(date);
+//			empInf1.setAccountNumber(506520102044558l);
+//			empInf1.setEmail("akshay@gmail.com");
+//			empInf1.setDesignation("Software Engineer");
+//
+//			empInf1.setDob(format.parse("1995-02-12"));
+//			empInf1.setDeptId(1);
+//			empInf1.setMngrId(5);
+//			
+//			EmployeeInfoBean empInf2 = new EmployeeInfoBean();
+//			empInf2.setId(5);
+//			empInf2.setName("Akshay");
+//			empInf2.setAge(25);
+//			empInf2.setGender("male");
+//			format = new SimpleDateFormat("yyyy-MM-dd");
+//			date = format.parse("2012-12-13");
+//
+//			empInf2.setSalary(20000);
+//			empInf2.setPhone(9876543210l);
+//			empInf2.setJoiningDate(date);
+//			empInf2.setAccountNumber(506520102044558l);
+//			empInf2.setEmail("akshay@gmail.com");
+//			empInf2.setDesignation("Software Engineer");
+//
+//			empInf2.setDob(format.parse("1995-02-12"));
+//			empInf2.setDeptId(1);
+//			empInf2.setMngrId(5);
+//			
+//			
+//			EmployeeInfoBean empInf3 = new EmployeeInfoBean();
+//			empInf3.setId(6);
+//			empInf3.setName("Akshay");
+//			empInf3.setAge(25);
+//			empInf3.setGender("male");
+//			format = new SimpleDateFormat("yyyy-MM-dd");
+//			date = format.parse("2012-12-13");
+//
+//			empInf3.setSalary(20000);
+//			empInf3.setPhone(9876543210l);
+//			empInf3.setJoiningDate(date);
+//			empInf3.setAccountNumber(506520102044558l);
+//			empInf3.setEmail("akshay@gmail.com");
+//			empInf3.setDesignation("Software Engineer");
+//
+//			empInf3.setDob(format.parse("1995-02-12"));
+//			empInf3.setDeptId(1);
+//			empInf3.setMngrId(5);
+//			
+//			TrainingInfoBean trainingInfoBean = new TrainingInfoBean();
+//			trainingInfoBean.setCourseId(101);
+//			trainingInfoBean.setCourseName("Java");
+//			trainingInfoBean.setCourseType("Full Time");
+//			trainingInfoBean.setDuration("6 months");
+//			trainingInfoBean.setInfoBeans(Arrays.asList(empInf1,empInf2,empInf3));
+//			HibernateImpl impl = new HibernateImpl();
+//			impl.createTraining(trainingInfoBean);
+//			
 //			EmployeeInfoBean empInf = new EmployeeInfoBean();
 //			empInf.setId(2);
 //			empInf.setName("Akshay");
@@ -202,10 +228,10 @@ public class App
 //			HibernateImpl impl = new HibernateImpl();
 //			impl.createEmployee(empInf, empOthInfo,Arrays.asList(addressInfoBean1,addressInfoBean2),Arrays.asList(employeeEducationInfoBean1,employeeEducationInfoBean2),
 //					Arrays.asList(experienceInfoBean1,experienceInfoBean2));
-			
-			
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-    }
+//			
+//			
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//    }
 }

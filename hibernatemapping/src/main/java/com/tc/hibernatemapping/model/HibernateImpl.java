@@ -12,12 +12,13 @@ import com.tc.hibernatemapping.bean.manytoone.EmployeeEducationInfoBean;
 import com.tc.hibernatemapping.bean.manytoone.EmployeeExperienceInfoBean;
 import com.tc.hibernatemapping.bean.manytoone.TrainingInfoBean;
 import com.tc.hibernatemapping.bean.onetoone.EmployeeOtherInfoBean;
+import com.tc.hibernatemapping.bean.primary.DepartmentInfoBean;
 import com.tc.hibernatemapping.bean.primary.EmployeeInfoBean;
 
 public class HibernateImpl {
 
 	private Configuration configuration = new Configuration();
-	private SessionFactory sessionFactory = configuration.configure().addAnnotatedClass(TrainingInfoBean.class).addAnnotatedClass(EmployeeInfoBean.class).addAnnotatedClass(EmployeeOtherInfoBean.class).addAnnotatedClass(EmployeeAddressInfoBean.class).addAnnotatedClass(EmployeeEducationInfoBean.class).addAnnotatedClass(EmployeeExperienceInfoBean.class).buildSessionFactory();
+	private SessionFactory sessionFactory = configuration.configure().addAnnotatedClass(DepartmentInfoBean.class).addAnnotatedClass(TrainingInfoBean.class).addAnnotatedClass(EmployeeInfoBean.class).addAnnotatedClass(EmployeeOtherInfoBean.class).addAnnotatedClass(EmployeeAddressInfoBean.class).addAnnotatedClass(EmployeeEducationInfoBean.class).addAnnotatedClass(EmployeeExperienceInfoBean.class).buildSessionFactory();
 	public void createEmployee(EmployeeInfoBean infoBean,
 			EmployeeOtherInfoBean otherInfoBean,
 			List<EmployeeAddressInfoBean> addressInfoBeans,
@@ -48,6 +49,23 @@ public class HibernateImpl {
 		try(Session session = sessionFactory.openSession()){
 			transaction = session.beginTransaction();
 			session.save(trainingInfoBean);
+			transaction.commit();
+
+		}
+	}
+	
+	public EmployeeInfoBean getEmployeeInfoBean(int id) {
+		Session session = sessionFactory.openSession();
+		EmployeeInfoBean bean = session.get(EmployeeInfoBean.class, id);
+		session.close();
+		return bean;
+	}
+	
+	public void createEmployee(EmployeeInfoBean infoBean) {
+		Transaction transaction = null;
+		try(Session session = sessionFactory.openSession()){
+			transaction = session.beginTransaction();
+			session.save(infoBean);
 			transaction.commit();
 
 		}
