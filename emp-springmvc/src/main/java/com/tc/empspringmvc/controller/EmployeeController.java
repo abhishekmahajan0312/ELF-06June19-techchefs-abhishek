@@ -56,4 +56,19 @@ public class EmployeeController {
 		map.addAttribute("bean", bean);
 		return VIEW_HOMEPAGE;
 	}
+	@GetMapping("/createEmployeePage")
+	public String createEmployee() {
+		return "createemployee";
+	}
+	@PostMapping("/createEmployee")
+		public String addEmployee(EmployeeInfoBean bean, ModelMap map) {
+
+		boolean result = dao.createEmployeeInfo(bean);
+		if (result) {
+			map.addAttribute("msg", "Employee added Successfully!!!");
+		} else {
+			map.addAttribute("msg", "Employee insertion failed!!!");
+		}
+		return "login";
+	}
 }

@@ -1,8 +1,12 @@
 package com.tc.empspringmvc.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -10,10 +14,12 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "employee_otherinfo")
-public class EmployeeOtherInfoBean {
+public class EmployeeOtherInfoBean implements Serializable{
 	@Id
-	@Column(name = "id")
-	int id;
+	@OneToOne
+	@JoinColumn(name = "id")
+	private EmployeeInfoBean infoBean;
+	
 	@Column(name = "pan")
 	String pan;
 	@Column(name = "ismarried")

@@ -80,7 +80,7 @@
 						</div>
 						<br>
 						<div class=" row">
-							<a href="createEmployeePage"
+							<a href="/employee/createEmployeePage"
 								class="offset-1 col-md-5 btn btn-outline-success"
 								style="border-radius: 3px 0 0 3px; border-right: 0">Create
 								Account</a> <a href="forgotpassword.html"
