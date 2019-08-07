@@ -2,16 +2,17 @@ package com.tc.empspringmvc.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Data;
 
@@ -21,13 +22,23 @@ import lombok.Data;
 public class EmployeeInfoBean implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
-	private EmployeeOtherInfoBean otherInfo;
+	private EmployeeOtherInfoBean employeeOtherInfoBean;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="addressPKBean.infoBean")
+	private List<EmployeeAddressInfoBean> addressInfoBeans;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="experiencePKBean.infoBean")
+	private List<EmployeeExperienceInfoBean> experienceInfoBeans;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="educationPKBean.infoBean")
+	private List<EmployeeEducationInfoBean> educationInfoBeans;
+	
+//	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
+//	private List<TrainingInfoBean> trainingInfoBeans;
 	
 	@Id
 	@Column(name = "id")
 	private int id;
-	@Column(name = "password")
-	private String password;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "age")
@@ -39,7 +50,6 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "phone")
 	private long phone;
 	@Column(name = "joining_date")
-	@DateTimeFormat(iso = ISO.DATE)
 	private Date joiningDate;
 	@Column(name = "account_number")
 	private long accountNumber;
@@ -48,10 +58,15 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "designation")
 	private String designation;
 	@Column(name = "dob")
-	@DateTimeFormat(iso = ISO.DATE)
 	private Date dob;
-	@Column(name = "dept_id")
-	private int departmentId;
-	@Column(name = "mngr_id")
-	private int managerId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
+	private DepartmentInfoBean deptInfoBean;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "mngr_id", referencedColumnName = "id")
+	private EmployeeInfoBean mngrId;
+	@Column(name = "password")
+	private String password;
 }

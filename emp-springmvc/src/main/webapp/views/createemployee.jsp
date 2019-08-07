@@ -147,7 +147,7 @@
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Manager ID</label> <input class="form-control"
-												type="number" name="manager_id"
+												type="number" name="mngrId.id"
 												placeholder="Please Enter Manager ID" />
 										</div>
 									</div>
@@ -323,41 +323,32 @@
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address Type</label> <select class="form-control"
-												name="addressType" required>
+												name="addressInfoBeans[0].addressPKBean.addressType" required>
 												<option value="" disabled selected>-- select one --</option>
 												<option>Temporary</option>
 												<option>Permanent</option>
 											</select>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-12 form-group">
-											<label>Gender</label> <select class="form-control"
-												name="gender">
-												<option>-- select one --</option>
-												<option value="male">Male</option>
-												<option value="female">Female</option>
-											</select>
-										</div>
-									</div>
+									
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address1</label> <input class="form-control"
-												type="text" name="address1"
+												type="text" name="addressInfoBeans[0].address1"
 												placeholder="Enter Address Line 1" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address2</label> <input class="form-control"
-												type="text" name="address2"
+												type="text" name="addressInfoBeans[0].address2"
 												placeholder="Enter Address Line 2" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Landmark</label> <input class="form-control"
-												type="text" name="landmark"
+												type="text" name="addressInfoBeans[0].landmark"
 												placeholder="Enter Address Landmark" />
 										</div>
 									</div>
@@ -367,26 +358,26 @@
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>City</label> <input class="form-control" type="text"
-												name="city" placeholder="Please Enter City" />
+												name="addressInfoBeans[0].city" placeholder="Please Enter City" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>State</label> <input class="form-control" type="text"
-												name="state" placeholder="Please Enter State" />
+												name="addressInfoBeans[0].state" placeholder="Please Enter State" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Country</label> <input class="form-control"
-												type="text" name="country"
+												type="text" name="addressInfoBeans[0].country"
 												placeholder="Please Enter Country" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Pincode</label> <input class="form-control"
-												type="number" name=pincode
+												type="number" name="addressInfoBeans[0].pincode"
 												placeholder="Please Enter Pincode" />
 										</div>
 									</div>
@@ -417,41 +408,32 @@
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address Type</label> <select class="form-control"
-												name="addressType" required>
+												name="addressInfoBeans[1].addressPKBean.addressType" required>
 												<option value="" disabled selected>-- select one --</option>
 												<option>Temporary</option>
 												<option>Permanent</option>
 											</select>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-12 form-group">
-											<label>Gender</label> <select class="form-control"
-												name="gender">
-												<option>-- select one --</option>
-												<option value="male">Male</option>
-												<option value="female">Female</option>
-											</select>
-										</div>
-									</div>
+									
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address1</label> <input class="form-control"
-												type="text" name="address1"
+												type="text" name="addressInfoBeans[1].address1"
 												placeholder="Enter Address Line 1" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Address2</label> <input class="form-control"
-												type="text" name="address2"
+												type="text" name="addressInfoBeans[1].address2"
 												placeholder="Enter Address Line 2" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Landmark</label> <input class="form-control"
-												type="text" name="landmark"
+												type="text" name="addressInfoBeans[1].landmark"
 												placeholder="Enter Address Landmark" />
 										</div>
 									</div>
@@ -461,26 +443,26 @@
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>City</label> <input class="form-control" type="text"
-												name="city" placeholder="Please Enter City" />
+												name="addressInfoBeans[1].city" placeholder="Please Enter City" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>State</label> <input class="form-control" type="text"
-												name="state" placeholder="Please Enter State" />
+												name="addressInfoBeans[1].state" placeholder="Please Enter State" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Country</label> <input class="form-control"
-												type="text" name="country"
+												type="text" name="addressInfoBeans[1].country"
 												placeholder="Please Enter Country" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12 form-group">
 											<label>Pincode</label> <input class="form-control"
-												type="number" name=pincode
+												type="number" name="addressInfoBeans[1].pincode"
 												placeholder="Please Enter Pincode" />
 										</div>
 									</div>
@@ -514,7 +496,7 @@
 												<div class="input-group-text">Education Type</div>
 											</div>
 											<input type="text" class="form-control" required
-												id="education_type" placeholder="Enter Education Type">
+												name="educationInfoBeans[0].educationPKBean.educationalType" placeholder="Enter Education Type">
 											<span id="id-error" class="text-danger small"></span>
 										</div>
 									</div>
@@ -524,7 +506,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Degree Type</div>
 											</div>
-											<input type="text" class="form-control" id="degree_type"
+											<input type="text" class="form-control" id="degree_type" name="educationInfoBeans[0].degreeType"
 												placeholder="Enter Degree Type"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -535,7 +517,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Branch</div>
 											</div>
-											<input type="text" class="form-control" id="branch"
+											<input type="text" class="form-control" id="branch" 
 												placeholder="Enter Degree Branch"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -547,7 +529,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">College Name</div>
 											</div>
-											<input type="text" class="form-control" id="college_name"
+											<input type="text" class="form-control" id="college_name" name="educationInfoBeans[0].collegeNM"
 												placeholder="Enter College Name"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -558,7 +540,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">University</div>
 											</div>
-											<input type="text" class="form-control" id="university"
+											<input type="text" class="form-control" id="university" name="educationInfoBeans[0].university"
 												placeholder="Enter University Name"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -569,7 +551,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Year Of Passing</div>
 											</div>
-											<input type="text" class="form-control" id="yop"
+											<input type="text" class="form-control" id="yop" name="educationInfoBeans[0].yop"
 												placeholder="dd-mm-yyyy"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -580,7 +562,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Percentage</div>
 											</div>
-											<input type="text" class="form-control" id="percentage"
+											<input type="text" class="form-control" id="percentage" name="educationInfoBeans[0].percentage"
 												placeholder="Enter Percentage"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -591,7 +573,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Location</div>
 											</div>
-											<input type="text" class="form-control" id="location"
+											<input type="text" class="form-control" id="location" name="educationInfoBeans[0].location"
 												placeholder="Enter College Location"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -624,8 +606,8 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Education Type</div>
 											</div>
-											<input type="text" required class="form-control"
-												id="education_type" placeholder="Enter Education Type">
+											<input type="text" class="form-control" required
+												name="educationInfoBeans[1].educationPKBean.educationalType" placeholder="Enter Education Type">
 											<span id="id-error" class="text-danger small"></span>
 										</div>
 									</div>
@@ -635,7 +617,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Degree Type</div>
 											</div>
-											<input type="text" class="form-control" id="degree_type"
+											<input type="text" class="form-control" id="degree_type" name="educationInfoBeans[1].degreeType"
 												placeholder="Enter Degree Type"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -646,7 +628,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Branch</div>
 											</div>
-											<input type="text" class="form-control" id="branch"
+											<input type="text" class="form-control" id="branch" 
 												placeholder="Enter Degree Branch"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -658,7 +640,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">College Name</div>
 											</div>
-											<input type="text" class="form-control" id="college_name"
+											<input type="text" class="form-control" id="college_name" name="educationInfoBeans[1].collegeNM"
 												placeholder="Enter College Name"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -669,7 +651,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">University</div>
 											</div>
-											<input type="text" class="form-control" id="university"
+											<input type="text" class="form-control" id="university" name="educationInfoBeans[1].university"
 												placeholder="Enter University Name"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
@@ -680,7 +662,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Year Of Passing</div>
 											</div>
-											<input type="text" class="form-control" id="yop"
+											<input type="text" class="form-control" id="yop" name="educationInfoBeans[1].yop"
 												placeholder="dd-mm-yyyy"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -691,7 +673,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Percentage</div>
 											</div>
-											<input type="text" class="form-control" id="percentage"
+											<input type="text" class="form-control" id="percentage" name="educationInfoBeans[1].percentage"
 												placeholder="Enter Percentage"> <span id="id-error"
 												class="text-danger small"></span>
 										</div>
@@ -702,11 +684,12 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Location</div>
 											</div>
-											<input type="text" class="form-control" id="location"
+											<input type="text" class="form-control" id="location" name="educationInfoBeans[1].location"
 												placeholder="Enter College Location"> <span
 												id="id-error" class="text-danger small"></span>
 										</div>
 									</div>
+
 
 
 								</div>
@@ -737,7 +720,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Company Name</div>
 											</div>
-											<input type="text" required class="form-control"
+											<input type="text" required class="form-control" name="experienceInfoBeans[0].experiencePKBean.companyName"
 												id="company_name" placeholder="Enter Company Name">
 										</div>
 									</div>
@@ -747,7 +730,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Designation</div>
 											</div>
-											<input type="text" class="form-control" id="designation"
+											<input type="text" class="form-control" id="designation" name="experienceInfoBeans[0].designation"
 												placeholder="Enter Designation">
 										</div>
 									</div>
@@ -757,7 +740,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Joining Date</div>
 											</div>
-											<input type="text" class="form-control" id="joining_date"
+											<input type="date" class="form-control" id="joining_date" name="experienceInfoBeans[0].joiningDate"
 												placeholder="dd-mm-yyyy">
 										</div>
 									</div>
@@ -768,7 +751,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Leaving Date</div>
 											</div>
-											<input type="text" class="form-control" id="leaving_date"
+											<input type="date" class="form-control" id="leaving_date" name="experienceInfoBeans[0].leavingDate"
 												placeholder="dd-mm-yyyy">
 										</div>
 									</div>
@@ -801,7 +784,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Company Name</div>
 											</div>
-											<input type="text" required class="form-control"
+											<input type="text" required class="form-control" name="experienceInfoBeans[1].experiencePKBean.companyName"
 												id="company_name" placeholder="Enter Company Name">
 										</div>
 									</div>
@@ -811,7 +794,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Designation</div>
 											</div>
-											<input type="text" class="form-control" id="designation"
+											<input type="text" class="form-control" id="designation" name="experienceInfoBeans[1].designation"
 												placeholder="Enter Designation">
 										</div>
 									</div>
@@ -821,7 +804,7 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Joining Date</div>
 											</div>
-											<input type="text" class="form-control" id="joining_date"
+											<input type="date" class="form-control" id="joining_date" name="experienceInfoBeans[1].joiningDate"
 												placeholder="dd-mm-yyyy">
 										</div>
 									</div>
@@ -832,11 +815,10 @@
 											<div class="input-group-prepend">
 												<div class="input-group-text">Leaving Date</div>
 											</div>
-											<input type="text" class="form-control" id="leaving_date"
+											<input type="date" class="form-control" id="leaving_date" name="experienceInfoBeans[1].leavingDate"
 												placeholder="dd-mm-yyyy">
 										</div>
 									</div>
-
 
 								</div>
 							</div>

@@ -58,7 +58,7 @@ public class EmployeeController {
 	}
 	@GetMapping("/createEmployeePage")
 	public String createEmployee() {
-		return "createemployee";
+		return "createemployee2";
 	}
 	@PostMapping("/createEmployee")
 		public String addEmployee(EmployeeInfoBean bean, ModelMap map) {
