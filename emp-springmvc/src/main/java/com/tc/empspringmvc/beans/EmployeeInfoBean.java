@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,7 +23,7 @@ import lombok.Data;
 public class EmployeeInfoBean implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
-	private EmployeeOtherInfoBean employeeOtherInfoBean;
+	private EmployeeOtherInfoBean otherInfo;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="addressPKBean.infoBean")
 	private List<EmployeeAddressInfoBean> addressInfoBeans;
@@ -33,8 +34,8 @@ public class EmployeeInfoBean implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="educationPKBean.infoBean")
 	private List<EmployeeEducationInfoBean> educationInfoBeans;
 	
-//	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
-//	private List<TrainingInfoBean> trainingInfoBeans;
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
+	private List<TrainingInfoBean> trainingInfoBeans;
 	
 	@Id
 	@Column(name = "id")
@@ -59,10 +60,11 @@ public class EmployeeInfoBean implements Serializable {
 	private String designation;
 	@Column(name = "dob")
 	private Date dob;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
-	private DepartmentInfoBean deptInfoBean;
-	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
+//	private DepartmentInfoBean deptInfoBean;
+	@Column(name="dept_id")
+	private int departmentId;
 	
 	@ManyToOne
 	@JoinColumn(name = "mngr_id", referencedColumnName = "id")

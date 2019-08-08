@@ -24,7 +24,7 @@ class Message extends React.Component{
     changeMessage = ()=>{
         console.log("Change Message Method")
         this.setState({
-            name: "Abhishek"
+            name: "Abhishek" 
         }) 
     }
 

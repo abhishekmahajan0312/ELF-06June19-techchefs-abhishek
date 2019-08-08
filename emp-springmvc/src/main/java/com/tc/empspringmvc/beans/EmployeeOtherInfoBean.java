@@ -17,33 +17,34 @@ import lombok.Data;
 public class EmployeeOtherInfoBean implements Serializable{
 	@Id
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id" )
+	
 	private EmployeeInfoBean infoBean;
 	
 	@Column(name = "pan")
-	String pan;
+	private String pan;
 	@Column(name = "ismarried")
-	boolean isMarried;
+	private boolean isMarried;
 	@Column(name = "blood_grp")
-	String bloodGrp;
+	private String bloodGrp;
 	@Column(name = "ischallenged")
-	boolean isChallenged;
+	private boolean isChallenged;
 	@Column(name = "emergency_contact_number")
-	long emergencyCN;
+	private long emergencyCN;
 	@Column(name = "emergency_contact_person")
-	String emergencyCP;
+	private String emergencyCP;
 	@Column(name = "nationality")
-	String nationality;
+	private String nationality;
 	@Column(name = "religion")
-	String religion;
+	private String religion;
 	@Column(name = "father_nm")
-	String fatherNM;
+	private String fatherNM;
 	@Column(name = "mother_nm")
-	String motherNM;
+	private String motherNM;
 	@Column(name = "spouse_nm")
-	String spouseNM;
+	private String spouseNM;
 	@Column(name = "passport")
-	String passport;
+	private String passport;
 	@Column(name = "adhar")
-	long adhar;
+	private long adhar;
 }

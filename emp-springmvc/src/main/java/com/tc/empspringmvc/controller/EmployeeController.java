@@ -26,7 +26,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tc.empspringmvc.beans.EmployeeAddressInfoBean;
+import com.tc.empspringmvc.beans.EmployeeEducationInfoBean;
+import com.tc.empspringmvc.beans.EmployeeExperienceInfoBean;
 import com.tc.empspringmvc.beans.EmployeeInfoBean;
+import com.tc.empspringmvc.beans.EmployeeOtherInfoBean;
 import com.tc.empspringmvc.dao.EmployeeDao;
 
 @Controller
@@ -62,13 +66,29 @@ public class EmployeeController {
 	}
 	@PostMapping("/createEmployee")
 		public String addEmployee(EmployeeInfoBean bean, ModelMap map) {
-
+		
+		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
+		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
+			employeeEducationInfoBean.getEducationPKBean().setInfoBean(bean);
+		}
+		List<EmployeeAddressInfoBean> addressBeans = bean.getAddressInfoBeans();
+		for (EmployeeAddressInfoBean employeeAddressInfoBean : addressBeans) {
+			employeeAddressInfoBean.getAddressPKBean().setInfoBean(bean);
+		}
+		List<EmployeeExperienceInfoBean> expBeans = bean.getExperienceInfoBeans();
+		for (EmployeeExperienceInfoBean employeeExperienceInfoBean : expBeans) {
+			employeeExperienceInfoBean.getExperiencePKBean().setInfoBean(bean);
+		}
+		
+		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
+		otherInfo.setInfoBean(bean);
+		
 		boolean result = dao.createEmployeeInfo(bean);
 		if (result) {
 			map.addAttribute("msg", "Employee added Successfully!!!");
 		} else {
 			map.addAttribute("msg", "Employee insertion failed!!!");
 		}
-		return "login";
+		return "loginPage";
 	}
 }

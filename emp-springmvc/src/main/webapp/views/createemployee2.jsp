@@ -107,7 +107,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Joining Date</label> <input class="form-control"
-											type="date" name=joining_date
+											type="date" name=joiningDate
 											placeholder="Please Enter Joining Date" />
 									</div>
 								</div>
@@ -116,7 +116,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Account Number</label> <input class="form-control"
-											type="number" name="account_number"
+											type="number" name="accountNumber"
 											placeholder="Please Enter Account Number" />
 									</div>
 								</div>
@@ -142,7 +142,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Department ID</label> <input class="form-control"
-											type="number" name="department_id"
+											type="number" name="departmentId"
 											placeholder="Please Enter Department ID" />
 									</div>
 								</div>
@@ -370,7 +370,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Pincode</label> <input class="form-control"
-											type="number" name="addressInfoBeans[0].pincode"
+											type="number" name="addressInfoBeans[0].pin"
 											placeholder="Please Enter Pincode" />
 									</div>
 								</div>
@@ -452,7 +452,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Pincode</label> <input class="form-control"
-											type="number" name="addressInfoBeans[1].pincode"
+											type="number" name="addressInfoBeans[1].pin"
 											placeholder="Please Enter Pincode" />
 									</div>
 								</div>
@@ -732,7 +732,7 @@
 									<div class="input-group-text">Leaving Date</div>
 								</div>
 								<input type="date" class="form-control" id="leaving_date"
-									name="experienceInfoBeans[0].leavingDate"
+									name="experienceInfoBeans[0].releavingDate"
 									placeholder="dd-mm-yyyy">
 							</div>
 						</div>
@@ -791,7 +791,7 @@
 									<div class="input-group-text">Leaving Date</div>
 								</div>
 								<input type="date" class="form-control" id="leaving_date"
-									name="experienceInfoBeans[1].leavingDate"
+									name="experienceInfoBeans[1].releavingDate"
 									placeholder="dd-mm-yyyy">
 							</div>
 						</div>
