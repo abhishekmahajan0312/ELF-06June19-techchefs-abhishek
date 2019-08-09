@@ -12,9 +12,12 @@
 <script src="jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- 
- </head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
 
 <body>
 
@@ -39,6 +42,11 @@
 
 			<div class="col-md-1">
 				<a href="./logout">Logout</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a href="/emp-springmvc/employee/updateEmployeePage">Update Employee</a>
 			</div>
 		</div>
 		<br>
@@ -86,11 +94,11 @@
 						</tr>
 						<tr>
 							<td>Address 1</td>
-							<td></td>
+							<td>${bean.addressInfoBeans.get(1).address1}</td>
 						</tr>
 						<tr>
 							<td>Address 2</td>
-							<td></td>
+							<td>${bean.addressInfoBeans.get(1).address2}</td>
 						</tr>
 
 					</table>
@@ -109,7 +117,7 @@
 							<td>Salary</td>
 							<td>${bean.salary}</td>
 							<td>Manager ID</td>
-							<td>${bean.managerId}</td>
+							<td>${bean.mngrId}</td>
 						</tr>
 						<tr>
 							<td>Joining Date</td>
@@ -133,6 +141,6 @@
 
 	</div>
 
-<a href="../webapp2/loginPage">Click</a>
+	<a href="../webapp2/loginPage">Click</a>
 </body>
 </html>

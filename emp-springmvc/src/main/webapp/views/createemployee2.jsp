@@ -149,7 +149,7 @@
 								<div class="row">
 									<div class="col-md-12 form-group">
 										<label>Manager ID</label> <input class="form-control"
-											type="number" name="mngrId.id"
+											type="number" name="managerId"
 											placeholder="Please Enter Manager ID" />
 									</div>
 								</div>

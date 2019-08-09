@@ -65,7 +65,7 @@ public class EmployeeController {
 		return "createemployee2";
 	}
 	@PostMapping("/createEmployee")
-		public String addEmployee(EmployeeInfoBean bean, ModelMap map) {
+		public String addEmployee(EmployeeInfoBean bean,int managerId, ModelMap map) {
 		
 		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
 		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
@@ -83,6 +83,7 @@ public class EmployeeController {
 		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
 		otherInfo.setInfoBean(bean);
 		
+		bean.setMngrId(dao.getEmployeeInfo(managerId));		
 		boolean result = dao.createEmployeeInfo(bean);
 		if (result) {
 			map.addAttribute("msg", "Employee added Successfully!!!");
@@ -91,4 +92,36 @@ public class EmployeeController {
 		}
 		return "loginPage";
 	}
+	@GetMapping("/updateEmployeePage")
+	public String updateEmployee() {
+		return "updateemployee";
+	}
+	 @PostMapping("/updateEmployee")
+	public String updateEmployee(EmployeeInfoBean bean,int managerId, ModelMap map) {
+	
+	List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
+	for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
+		employeeEducationInfoBean.getEducationPKBean().setInfoBean(bean);
+	}
+	List<EmployeeAddressInfoBean> addressBeans = bean.getAddressInfoBeans();
+	for (EmployeeAddressInfoBean employeeAddressInfoBean : addressBeans) {
+		employeeAddressInfoBean.getAddressPKBean().setInfoBean(bean);
+	}
+	List<EmployeeExperienceInfoBean> expBeans = bean.getExperienceInfoBeans();
+	for (EmployeeExperienceInfoBean employeeExperienceInfoBean : expBeans) {
+		employeeExperienceInfoBean.getExperiencePKBean().setInfoBean(bean);
+	}
+	
+	EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
+	otherInfo.setInfoBean(bean);
+	
+	bean.setMngrId(dao.getEmployeeInfo(managerId));		
+	boolean result = dao.updateEmployeeInfo(bean);
+	if (result) {
+		map.addAttribute("msg", "Employee updated Successfully!!!");
+	} else {
+		map.addAttribute("msg", "Employee updation failed!!!");
+	}
+	return VIEW_HOMEPAGE;
+}
 }
