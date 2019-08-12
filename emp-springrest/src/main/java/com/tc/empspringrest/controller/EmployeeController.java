@@ -1,6 +1,5 @@
 package com.tc.empspringrest.controller;
 
-import static com.tc.empspringrest.common.EMPConstants.VIEW_HOMEPAGE;
 import static com.tc.empspringrest.common.EMPConstants.DB_INTERACTION_TYPE;
 import static com.tc.empspringrest.common.EMPConstants.PROPERTY_FILENAME;
 
@@ -17,12 +16,16 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tc.empspringrest.beans.EmployeeAddressInfoBean;
 import com.tc.empspringrest.beans.EmployeeEducationInfoBean;
@@ -46,23 +49,23 @@ public class EmployeeController {
 		binder.registerCustomEditor(Date.class, editor);
 	}
 
-	@GetMapping("/delete")
-	public boolean deleteEmployee(@PathVariable("id")int id) {
+	@DeleteMapping("/removeEmployee")
+	public @ResponseBody boolean deleteEmployee(@PathVariable("id")int id) {
 		return dao.deleteEmployeeInfo(id);
 	}
 
 	@GetMapping("/getEmployee")
-	public EmployeeInfoBean getEmployee(@RequestParam(name = "empId") int id) {
+	public @ResponseBody EmployeeInfoBean getEmployee(@RequestParam(name = "empId") int id) {
 		return dao.getEmployeeInfo(id);
 	}
 
 	@GetMapping("/getAllEmployee")
-	public List<EmployeeInfoBean> getAllEmployee() {
+	public @ResponseBody List<EmployeeInfoBean> getAllEmployee() {
 		return dao.getAllEmployeeInfo();
 	}
 
 	@PostMapping("/createEmployee")
-	public boolean addEmployee(EmployeeInfoBean bean, int managerId, ModelMap map) {
+	public @ResponseBody boolean addEmployee(@RequestBody EmployeeInfoBean bean, ModelMap map) {
 
 		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
 		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
@@ -80,7 +83,7 @@ public class EmployeeController {
 		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
 		otherInfo.setInfoBean(bean);
 
-		bean.setMngrId(dao.getEmployeeInfo(managerId));
+		bean.setMngrId(dao.getEmployeeInfo(bean.getMngrId().getId()));
 		boolean result = dao.createEmployeeInfo(bean);
 		if (result) {
 			map.addAttribute("msg", "Employee added Successfully!!!");
@@ -91,8 +94,8 @@ public class EmployeeController {
 
 	}
 
-	@PostMapping("/updateEmployee")
-	public boolean updateEmployee(EmployeeInfoBean bean, int managerId, ModelMap map, HttpSession session) {
+	@PutMapping("/updateEmployee")
+	public @ResponseBody boolean updateEmployee(EmployeeInfoBean bean, int managerId, ModelMap map, HttpSession session) {
 
 		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
 		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {

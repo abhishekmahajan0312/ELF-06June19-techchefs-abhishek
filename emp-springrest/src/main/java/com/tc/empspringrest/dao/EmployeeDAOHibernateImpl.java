@@ -65,9 +65,6 @@ public final class EmployeeDAOHibernateImpl implements EmployeeDao {
 			// 4. Interact with the DB via Session
 			EmployeeInfoBean bean = session.get(EmployeeInfoBean.class, id);
 
-			// 5. Close Session
-			session.close();
-
 			return bean;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

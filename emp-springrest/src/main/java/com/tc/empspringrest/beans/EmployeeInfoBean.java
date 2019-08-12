@@ -15,14 +15,87 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+@SuppressWarnings("serial")
+@XmlRootElement(name = "employee-info-bean")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
+	@XmlElement(name = "other-info")
+	private EmployeeOtherInfoBean otherInfo;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "addressPKBean.infoBean")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "address-info-beans")
+	private List<EmployeeAddressInfoBean> addressInfoBeans;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "experiencePKBean.infoBean")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "experience-info-beans")
+	private List<EmployeeExperienceInfoBean> experienceInfoBeans;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "educationPKBean.infoBean")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "education-info-beans")
+	private List<EmployeeEducationInfoBean> educationInfoBeans;
+
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "training-info-beans")
+	private List<TrainingInfoBean> trainingInfoBeans;
+
+	@Id
+	@Column(name = "id")
+	private int id;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "age")
+	private int age;
+	@Column(name = "gender")
+	private String gender;
+	@Column(name = "salary")
+	private double salary;
+	@Column(name = "phone")
+	private long phone;
+	@Column(name = "joining_date")
+	@XmlElement(name = "joining-date")
+	private Date joiningDate;
+	@Column(name = "account_number")
+	@XmlElement(name = "account-number")
+	private long accountNumber;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "designation")
+	private String designation;
+	@Column(name = "dob")
+	private Date dob;
+	@Column(name = "password")
+	private String password;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
+	private DepartmentInfoBean deptInfoBean;
+	
+//	@Column(name = "dept_id")
+//	@XmlElement(name = "department-id")
+//	private int departmentId;
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "mngr_id", referencedColumnName = "id")
+	private EmployeeInfoBean mngrId;
+	
+	
 	public EmployeeOtherInfoBean getOtherInfo() {
 		return otherInfo;
 	}
@@ -151,12 +224,13 @@ public class EmployeeInfoBean implements Serializable {
 		this.dob = dob;
 	}
 
-	public int getDepartmentId() {
-		return departmentId;
+	
+	public DepartmentInfoBean getDeptInfoBean() {
+		return deptInfoBean;
 	}
 
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+	public void setDeptInfoBean(DepartmentInfoBean deptInfoBean) {
+		this.deptInfoBean = deptInfoBean;
 	}
 
 	public EmployeeInfoBean getMngrId() {
@@ -175,60 +249,5 @@ public class EmployeeInfoBean implements Serializable {
 		this.password = password;
 	}
 
-//	 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
-//	@LazyCollection(LazyCollectionOption.FALSE)
-	private EmployeeOtherInfoBean otherInfo;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "addressPKBean.infoBean", fetch = FetchType.EAGER)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<EmployeeAddressInfoBean> addressInfoBeans;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "experiencePKBean.infoBean")
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<EmployeeExperienceInfoBean> experienceInfoBeans;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "educationPKBean.infoBean")
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<EmployeeEducationInfoBean> educationInfoBeans;
-
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<TrainingInfoBean> trainingInfoBeans;
-
-	@Id
-	@Column(name = "id")
-	private int id;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "age")
-	private int age;
-	@Column(name = "gender")
-	private String gender;
-	@Column(name = "salary")
-	private double salary;
-	@Column(name = "phone")
-	private long phone;
-	@Column(name = "joining_date")
-	private Date joiningDate;
-	@Column(name = "account_number")
-	private long accountNumber;
-	@Column(name = "email")
-	private String email;
-	@Column(name = "designation")
-	private String designation;
-	@Column(name = "dob")
-	private Date dob;
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
-//	private DepartmentInfoBean deptInfoBean;
-	@Column(name = "dept_id")
-	private int departmentId;
-
-	@ManyToOne(cascade = CascadeType.ALL) // , fetch = FetchType.EAGER)
-	@JoinColumn(name = "mngr_id", referencedColumnName = "id")
-	// @LazyCollection(LazyCollectionOption.FALSE)
-	private EmployeeInfoBean mngrId;
-	@Column(name = "password")
-	private String password;
+	
 }
