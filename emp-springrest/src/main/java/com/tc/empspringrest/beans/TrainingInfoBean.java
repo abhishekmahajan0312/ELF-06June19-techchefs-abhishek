@@ -21,8 +21,8 @@ import lombok.Data;
 
 @Entity
 @Table(name = "training_info")
-@XmlRootElement(name = "training-info")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name = "training-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class TrainingInfoBean implements Serializable {
 	@Id
 	@Column(name = "course_id")

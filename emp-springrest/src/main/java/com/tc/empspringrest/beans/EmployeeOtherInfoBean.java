@@ -29,13 +29,13 @@ public class EmployeeOtherInfoBean implements Serializable{
 	private String pan;
 	@XmlElement(name = "is-married")
 	@Column(name = "ismarried")
-	private boolean isMarried;
+	private Boolean isMarried;
 	@Column(name = "blood_grp")
 	@XmlElement(name = "blood-group")
 	private String bloodGrp;
 	@Column(name = "ischallenged")
 	@XmlElement(name = "is-challenged")
-	private boolean isChallenged;
+	private Boolean isChallenged;
 	@Column(name = "emergency_contact_number")
 	@XmlElement(name = "emergency-contact-number")
 	private long emergencyCN;

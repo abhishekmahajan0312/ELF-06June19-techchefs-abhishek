@@ -12,21 +12,35 @@ export class CreateAccount extends Component {
         }
         this.postData = this.postData.bind(this);
     }
+
+    validateForm = ()=>{
+        if (this.state.email === "" || this.state.name === "" || this.state.phoneno === "" || this.state.password === "" || this.state.phoneno.length !== 10) {
+            return false;
+        }
+        return true;
+    }
+   
     postData(event) {
         event.preventDefault();
         console.log('Post Data', this.state);
-        let accountData = this.state;
-        Axios.post('https://emp-app-1-aaa9e.firebaseio.com/accounts.json', accountData).then((response) => {
-            console.log('Response Object', response);
-            this.setState({
-                name: '',
-                email: '',
-                phoneno: '',
-                password: ''
+        // let validate = this.validateForm;
+        if(this.validateForm()){
+            let accountData = this.state;
+            Axios.post('https://emp-app-1-aaa9e.firebaseio.com/accounts.json', accountData).then((response) => {
+                console.log('Response Object', response);
+                this.setState({
+                    name: '',
+                    email: '',
+                    phoneno: '',
+                    password: ''
+                })
+            }).catch((error) => {
+                console.log('Error Object', error);
             })
-        }).catch((error) => {
-            console.log('Error Object', error);
-        })
+        }
+        else{
+            console.log("Validation", "Invalid Details");
+        }
     }
     render() {
         return (
@@ -34,7 +48,7 @@ export class CreateAccount extends Component {
                 <form onSubmit={this.postData} className="p-5">
                     <div className="row ">
                         <div className="col">
-                            <input type="text" onChange={(event) => {
+                            <input type="text" required onChange={(event) => {
                                 this.setState({
                                     name: event.target.value
                                 })
@@ -42,7 +56,7 @@ export class CreateAccount extends Component {
                                 value={this.state.name} className="form-control" placeholder="Name" />
                         </div>
                         <div className="col">
-                            <input type="text"
+                            <input type="email"
                                 onChange={(event) => {
                                     this.setState({
                                         email: event.target.value
@@ -60,7 +74,7 @@ export class CreateAccount extends Component {
                                         phoneno: event.target.value
                                     })
                                 }}
-                                value={this.state.phoneno} className="form-control" placeholder="Phone Number" />
+                                value={this.state.phoneno} className="form-control" maxLength="10" minLength="10" placeholder="Phone Number" />
                         </div>
                         <div className="col">
                             <input type="password"

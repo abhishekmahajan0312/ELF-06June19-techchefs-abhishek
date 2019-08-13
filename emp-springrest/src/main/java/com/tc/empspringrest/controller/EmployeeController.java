@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -33,6 +34,7 @@ import com.tc.empspringrest.beans.EmployeeExperienceInfoBean;
 import com.tc.empspringrest.beans.EmployeeInfoBean;
 import com.tc.empspringrest.beans.EmployeeOtherInfoBean;
 import com.tc.empspringrest.dao.EmployeeDao;
+import com.tc.empspringrest.dao.Employees;
 
 @Controller
 @RequestMapping("/employee")
@@ -54,18 +56,20 @@ public class EmployeeController {
 		return dao.deleteEmployeeInfo(id);
 	}
 
-	@GetMapping("/getEmployee")
+	@GetMapping(path="/getEmployee", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody EmployeeInfoBean getEmployee(@RequestParam(name = "empId") int id) {
 		return dao.getEmployeeInfo(id);
 	}
 
 	@GetMapping("/getAllEmployee")
-	public @ResponseBody List<EmployeeInfoBean> getAllEmployee() {
-		return dao.getAllEmployeeInfo();
+	public @ResponseBody Employees getAllEmployee() {
+		Employees emps = new Employees();
+		emps.setAllEmployees(dao.getAllEmployeeInfo());
+		return emps;
 	}
 
 	@PostMapping("/createEmployee")
-	public @ResponseBody boolean addEmployee(@RequestBody EmployeeInfoBean bean, ModelMap map) {
+	public @ResponseBody Boolean addEmployee(@RequestBody EmployeeInfoBean bean, ModelMap map) {
 
 		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
 		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
