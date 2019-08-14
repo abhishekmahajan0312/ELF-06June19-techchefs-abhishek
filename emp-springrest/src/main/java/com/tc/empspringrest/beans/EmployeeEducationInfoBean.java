@@ -11,27 +11,31 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Entity
 @Table(name = "employee_educationinfo")
-@XmlRootElement(name = "employee-education-info")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name = "employee-education-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
+
 public class EmployeeEducationInfoBean implements Serializable {
 	
 	@EmbeddedId
-	@XmlElement(name="education-pk")
+//	@XmlElement(name="education-pk")
+	@JsonProperty(value="education-pk")
 	private EmployeeEducationPKBean educationPKBean;
 	@Column(name = "degree_type")
-	@XmlElement(name="degree-type")
+//	@XmlElement(name="degree-type")
 	private String degreeType;
 	@Column(name = "college_nm")
-	@XmlElement(name="college-name")
+//	@XmlElement(name="college-name")
 	private String collegeNM;
 	@Column(name = "university")
 	private String university;
 	@Column(name = "yop")
-	@XmlElement(name="y-o-p")
+//	@XmlElement(name="y-o-p")
 	private String yop;
 	@Column(name = "percentage")
 	private String percentage;

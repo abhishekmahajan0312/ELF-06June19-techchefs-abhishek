@@ -12,9 +12,24 @@ export class ViewAccounts extends Component {
             phoneno: "",
             password: "",
             id: "",
+            currentaccount: null
         };
     }
     componentDidMount() {
+        // this.getAccounts()  
+        this.getUsingFetch(); 
+    }
+    getUsingFetch(){
+        fetch('https://emp-app-1-aaa9e.firebaseio.com/accounts.json').
+        then((data)=>{
+            console.log('Data',data)
+           return data.json()
+        })
+        .then((response)=>{
+            console.log('Res',response)
+        })
+    }
+    getAccounts(){
         Axios.get('https://emp-app-1-aaa9e.firebaseio.com/accounts.json').then((response) => {
             console.log('Response Data', response.data);
             let fetchedAccounts = [];
@@ -65,7 +80,8 @@ export class ViewAccounts extends Component {
             phoneno: account.phoneno,
             password: account.password,
             show: !this.state.show,
-            id: account.id
+            id: account.id,
+            currentaccount : account
         });
     }
     handleClose() {
@@ -89,7 +105,8 @@ export class ViewAccounts extends Component {
                         }
                     })
                     // account = { ...account, id: id }
-                    // let index = allAccounts.indexOf(account);
+                    let index = allAccounts.indexOf(this.state.currentaccount);
+                    console.log("index:::",index);
                     // let newAccounts = allAccounts.splice(index, 1, account);
 
                     this.setState({

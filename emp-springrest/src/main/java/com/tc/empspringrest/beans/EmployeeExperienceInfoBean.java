@@ -16,20 +16,20 @@ import lombok.Data;
 
 @Entity
 @Table(name = "employee_experienceinfo")
-@XmlRootElement(name = "employee-experience-info")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name = "employee-experience-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class EmployeeExperienceInfoBean implements Serializable {
 	
 	@EmbeddedId
-	@XmlElement(name="experience-pk")
+//	@XmlElement(name="experience-pk")
 	private EmployeeExperiencePKBean experiencePKBean;
 	@Column(name = "designation")
 	private String designation;
-	@XmlElement(name="joining-date")
+//	@XmlElement(name="joining-date")
 	@Column(name = "joining_date")
 	private Date joiningDate ;
 	@Column(name = "releaving_date")
-	@XmlElement(name="releaving-date")
+//	@XmlElement(name="releaving-date")
 	private Date releavingDate;
 	public EmployeeExperiencePKBean getExperiencePKBean() {
 		return experiencePKBean;

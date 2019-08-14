@@ -14,17 +14,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 @Entity
 @Table(name="department_info")
-@XmlRootElement(name="department-info")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name="department-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class DepartmentInfoBean implements Serializable {
 
 	@Id
 	@Column(name="dept_id")
-	@XmlElement(name="department-id")
+//	@XmlElement(name="department-id")
 	private int departmentId;
 	
 	@Column(name="dept_name")
-	@XmlElement(name="department-name")
+//	@XmlElement(name="department-name")
 	private String departmentName;
 
 	public int getDepartmentId() {

@@ -2,6 +2,7 @@ package com.tc.empspringrest.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -12,21 +13,25 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @SuppressWarnings("serial")
-@XmlRootElement(name = "employee-address-pk")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name = "employee-address-pk")
+//@XmlAccessorType(XmlAccessType.FIELD)
 @Embeddable
 public class EmployeeAddressPKBean implements Serializable {
 	
-	@XmlTransient
+//	@XmlTransient
+	@JsonIgnore
 	@JoinColumn(name = "id")
 	@ManyToOne
 	private EmployeeInfoBean infoBean;
 	@Column(name = "address_type")
-	
-	@XmlElement(name="address-type")
+//	@XmlElement(name="address-type")
+	@JsonProperty(value="address-type")
 	private String addressType;
 
 	public EmployeeInfoBean getInfoBean() {
