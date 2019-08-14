@@ -151,12 +151,14 @@ public class EmployeeInfoBean implements Serializable {
 		this.dob = dob;
 	}
 
-	public int getDepartmentId() {
-		return departmentId;
+	
+
+	public DepartmentInfoBean getDeptInfoBean() {
+		return deptInfoBean;
 	}
 
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+	public void setDeptInfoBean(DepartmentInfoBean deptInfoBean) {
+		this.deptInfoBean = deptInfoBean;
 	}
 
 	public EmployeeInfoBean getMngrId() {
@@ -219,11 +221,11 @@ public class EmployeeInfoBean implements Serializable {
 	private String designation;
 	@Column(name = "dob")
 	private Date dob;
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
-//	private DepartmentInfoBean deptInfoBean;
-	@Column(name = "dept_id")
-	private int departmentId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "department_id", referencedColumnName = "dept_id")
+	private DepartmentInfoBean deptInfoBean;
+//	@Column(name = "dept_id")
+//	private int departmentId;
 
 	@ManyToOne(cascade = CascadeType.ALL) // , fetch = FetchType.EAGER)
 	@JoinColumn(name = "mngr_id", referencedColumnName = "id")

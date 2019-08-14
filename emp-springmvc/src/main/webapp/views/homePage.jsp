@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 
+<%@page import="org.springframework.web.servlet.support.ServletUriComponentsBuilder"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+
+<%
+	String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+%>
 <html>
 
 <head>
@@ -24,12 +29,12 @@
 	<div class="container">
 		<div class="row navbar navbar-inverse">
 			<div class="col-md-2">
-				<a href="../validator/validate/getHomePage"><img src="1.png"
+				<a href="<%=baseUrl%>/validator/validate/getHomePage"><img src="/emp-springmvc/resources/images/1.png"
 					style="width: 50px; height: 50px;"></a>
 			</div>
 
 			<div class='col-md-8'>
-				<form action='../validator/validate/employee/search'>
+				<form action='<%=baseUrl%>/validator/validate/employee/search'>
 					<input type='search' name='q'
 						placeholder='Enter Employee ID or Name' class='form-control'>
 			</div>
@@ -46,7 +51,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a href="/emp-springmvc/employee/updateEmployeePage">Update Employee</a>
+				<a href="<%=baseUrl%>/employee/updateEmployeePage">Update Employee</a>
 			</div>
 		</div>
 		<br>
@@ -123,7 +128,7 @@
 							<td>Joining Date</td>
 							<td>${bean.joiningDate}</td>
 							<td>Department ID</td>
-							<td>${bean.departmentId}</td>
+							<td>${bean.deptInfoBean.departmentId}</td>
 						</tr>
 						<tr>
 							<td>Designation</td>
@@ -141,6 +146,5 @@
 
 	</div>
 
-	<a href="../webapp2/loginPage">Click</a>
 </body>
 </html>

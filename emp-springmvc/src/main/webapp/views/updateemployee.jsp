@@ -12,6 +12,10 @@
 	String jd = formatter.format(bean.getJoiningDate());
 	String dob = formatter.format(bean.getDob());
 	EmployeeInfoBean mngrId = bean.getMngrId();
+	String managerId="";
+	if(mngrId!=null){
+		managerId=Integer.toString(mngrId.getId());
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -188,7 +192,7 @@
 									<div class="col-md-12 form-group">
 										<label>Manager ID</label> <input readonly readonly
 											class="form-control" type="number" name="managerId"
-											value='<%=mngrId.getId()%>'
+											value='<%=managerId%>'
 											placeholder="Please Enter Manager ID" />
 									</div>
 								</div>

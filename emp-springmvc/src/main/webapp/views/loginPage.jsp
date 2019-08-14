@@ -46,7 +46,7 @@
 						</button>
 					</div>
 					
-					<form class="form-horizontal" action="./authenticate" method="POST">
+					<form class="form-horizontal" action="/emp-springmvc/login/authenticate" method="POST">
 						<div class="col-auto">
 							<label class="sr-only" for="id">Id</label>
 							<div class="input-group mb-2">
