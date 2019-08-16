@@ -32,38 +32,38 @@ import lombok.Data;
 //@XmlRootElement(name = "employee-info")
 //@XmlAccessorType(XmlAccessType.FIELD)
 @Data
-@JsonRootName(value = "employee-info")
+@JsonRootName(value = "employeeInfo")
 @Entity
 @Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
 //	@XmlElement(name = "other-info")
-	@JsonProperty(value = "other-info")
+	@JsonProperty(value = "otherInfo")
 	private EmployeeOtherInfoBean otherInfo;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "addressPKBean.infoBean")
 	@LazyCollection(LazyCollectionOption.FALSE)
 //	@XmlElement(name = "address-info-beans")
-	@JsonProperty(value = "address-info-beans")
+	@JsonProperty(value = "addressInfoBeans")
 	private List<EmployeeAddressInfoBean> addressInfoBeans;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "experiencePKBean.infoBean")
 	@LazyCollection(LazyCollectionOption.FALSE)
 //	@XmlElement(name = "experience-info-beans")
-	@JsonProperty(value = "experience-info-beans")
+	@JsonProperty(value = "experienceInfoBeans")
 	private List<EmployeeExperienceInfoBean> experienceInfoBeans;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "educationPKBean.infoBean")
 	@LazyCollection(LazyCollectionOption.FALSE)
 //	@XmlElement(name = "education-info-beans")
-	@JsonProperty(value = "education-info-beans")
+	@JsonProperty(value = "educationInfoBeans")
 	private List<EmployeeEducationInfoBean> educationInfoBeans;
 
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "infoBeans")
 	@LazyCollection(LazyCollectionOption.FALSE)
 //	@XmlElement(name = "training-info-beans")
-	@JsonProperty(value = "training-info-beans")
+	@JsonProperty(value = "trainingInfoBeans")
 	private List<TrainingInfoBean> trainingInfoBeans;
 
 	@Id
@@ -84,7 +84,7 @@ public class EmployeeInfoBean implements Serializable {
 	private Date joiningDate;
 	@Column(name = "account_number")
 //	@XmlElement(name = "account-number")
-	@JsonProperty(value = "account-number")
+	@JsonProperty(value = "accountNumber")
 	private long accountNumber;
 	@Column(name = "email")
 	private String email;

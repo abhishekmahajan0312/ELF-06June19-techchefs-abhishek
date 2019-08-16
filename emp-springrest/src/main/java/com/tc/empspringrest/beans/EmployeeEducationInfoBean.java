@@ -24,7 +24,7 @@ public class EmployeeEducationInfoBean implements Serializable {
 	
 	@EmbeddedId
 //	@XmlElement(name="education-pk")
-	@JsonProperty(value="education-pk")
+//	@JsonProperty(value="education-pk")
 	private EmployeeEducationPKBean educationPKBean;
 	@Column(name = "degree_type")
 //	@XmlElement(name="degree-type")

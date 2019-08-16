@@ -15,12 +15,12 @@ import lombok.Data;
 
 @Entity
 @Table(name = "employee_addressinfo")
-@XmlRootElement(name = "employee-address-info")
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(name = "employee-address-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class EmployeeAddressInfoBean implements Serializable {
 	
 	@EmbeddedId
-	@XmlElement(name="address-pk")
+//	@XmlElement(name="address-pk")
 	private EmployeeAddressPKBean addressPKBean;
 	@Column(name = "address1")
 	private String address1;

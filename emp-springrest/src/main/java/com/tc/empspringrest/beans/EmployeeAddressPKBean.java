@@ -31,7 +31,7 @@ public class EmployeeAddressPKBean implements Serializable {
 	private EmployeeInfoBean infoBean;
 	@Column(name = "address_type")
 //	@XmlElement(name="address-type")
-	@JsonProperty(value="address-type")
+//	@JsonProperty(value="address-type")
 	private String addressType;
 
 	public EmployeeInfoBean getInfoBean() {

@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -40,6 +41,7 @@ import com.tc.empspringrest.beans.EmployeeResponse;
 import com.tc.empspringrest.dao.EmployeeDao;
 import com.tc.empspringrest.dao.Employees;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/employee")
 @PropertySource(PROPERTY_FILENAME)
@@ -57,10 +59,11 @@ public class EmployeeController {
 
 	@DeleteMapping("/removeEmployee/{id}")
 //	public @ResponseBody boolean deleteEmployee(@PathVariable("id")int id) {
-	public EmployeeResponse deleteEmployee(@PathVariable("id") int id, HttpSession session) {
+	public EmployeeResponse deleteEmployee(@PathVariable("id") int id, HttpServletRequest req) {
 
 		EmployeeResponse response = new EmployeeResponse();
-		if (!session.isNew()) {
+		HttpSession session = req.getSession(false);
+		if (session!=null) {
 			if (dao.deleteEmployeeInfo(id)) {
 				response.setStatusCode(201);
 				response.setMessage("Successfull");
@@ -71,7 +74,7 @@ public class EmployeeController {
 				response.setDescription("Employee data not deleted successfully");
 			}
 		} else {
-			session.invalidate();
+//			session.invalidate();
 			response.setStatusCode(501);
 			response.setMessage("Failure");
 			response.setDescription("Please Login First");
@@ -81,9 +84,10 @@ public class EmployeeController {
 
 	@GetMapping(path = "/getEmployee", produces = { MediaType.APPLICATION_JSON_VALUE })
 //	public @ResponseBody EmployeeInfoBean getEmployee(@RequestParam(name = "empId") int id) {
-	public EmployeeResponse getEmployee(@RequestParam(name = "empId") int id, HttpSession session) {
+	public EmployeeResponse getEmployee(@RequestParam(name = "empId") int id, HttpServletRequest req) {
 		EmployeeResponse response = new EmployeeResponse();
-		if (!session.isNew()) {
+//		HttpSession session = req.getSession(false);
+//		if (session!=null) {
 			EmployeeInfoBean bean = dao.getEmployeeInfo(id);
 			if (bean != null) {
 				response.setStatusCode(201);
@@ -95,12 +99,37 @@ public class EmployeeController {
 				response.setMessage("Failure");
 				response.setDescription("Employee data not found");
 			}
-		} else {
-			session.invalidate();
-			response.setStatusCode(501);
-			response.setMessage("Failure");
-			response.setDescription("Please Login First");
-		}
+//		} else {
+////			session.invalidate();
+//			response.setStatusCode(501);
+//			response.setMessage("Failure");
+//			response.setDescription("Please Login First");
+//		}
+		return response;
+	}
+	
+	@GetMapping(path = "/searchEmployee", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public EmployeeResponse searchEmployee(@RequestParam(name = "empId") int id, HttpServletRequest req) {
+		EmployeeResponse response = new EmployeeResponse();
+//		HttpSession session = req.getSession(false);
+//		if (session!=null) {
+			List<EmployeeInfoBean> beans = dao.getAllEmployeeInfoWithRestrictions(id);
+			if (beans != null) {
+				response.setStatusCode(201);
+				response.setMessage("Successfull");
+				response.setDescription("Employee data found successfully");
+				response.setBeans(beans);
+			} else {
+				response.setStatusCode(401);
+				response.setMessage("Failure");
+				response.setDescription("Employee data not found");
+			}
+//		} else {
+////			session.invalidate();
+//			response.setStatusCode(501);
+//			response.setMessage("Failure");
+//			response.setDescription("Please Login First");
+//		}
 		return response;
 	}
 

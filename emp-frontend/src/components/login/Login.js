@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button ,Alert} from 'react-bootstrap'
+import { BrowserRouter as Link } from 'react-router-dom'
+import { Navbar, NavDropdown,Alert } from 'react-bootstrap'
 import logo from '../../assets/logo192.png';
 
 
@@ -11,7 +11,7 @@ export class Login extends Component {
         this.state = {
             id: '',
             password: '',
-            show : false
+            show: false
         }
         this.postData = this.postData.bind(this);
     }
@@ -33,11 +33,15 @@ export class Login extends Component {
                 // let data = JSON.parse(responseData);
                 // console.log(data);
                 if (responseData.message === "Success") {
+                    console.log(responseData.beans[0])
+                    localStorage.setItem("bean", JSON.stringify(responseData.beans[0]))
+                    localStorage.setItem("username",responseData.beans[0].name)
                     this.props.history.push("/homePage")
+                    
                 }
                 else {
                     this.setState({
-                        show:true
+                        show: true
                     })
                     this.props.history.push("/")
                 }
@@ -78,14 +82,14 @@ export class Login extends Component {
                             <div className="card-body">
                                 <h4 className="text-center border-bottom">Employee Login</h4>
                                 <br />
-                               { this.state.show ?
-                                    <Alert variant="danger" dismissible>
+                                {this.state.show ?
+                                    <Alert variant="danger">
                                         <Alert.Heading>Invalid Credentials!</Alert.Heading>
                                     </Alert>
 
-                                :null
-                
-                               }
+                                    : null
+
+                                }
                                 <form onSubmit={this.postData} className="form-horizontal">
                                     <div className="col-auto">
                                         <div className="input-group mb-2">

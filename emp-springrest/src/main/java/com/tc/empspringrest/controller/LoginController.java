@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tc.empspringrest.beans.EmployeeInfoBean;
 import com.tc.empspringrest.beans.EmployeeResponse;
 import com.tc.empspringrest.dao.EmployeeDao;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/login")
 @PropertySource(PROPERTY_FILENAME)
@@ -55,7 +56,7 @@ public class LoginController {
 			response.setMessage("Success");
 			response.setDescription("Login successfully");
 			response.setBeans(Arrays.asList(bean));
-			request.getSession().setAttribute("bean", bean);
+			request.getSession(true).setAttribute("bean", bean);
 			
 		} else {
 			response.setStatusCode(401);

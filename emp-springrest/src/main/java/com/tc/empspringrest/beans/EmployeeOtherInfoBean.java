@@ -30,28 +30,25 @@ public class EmployeeOtherInfoBean implements Serializable{
 	@JoinColumn(name = "id" )
 //	@XmlTransient
 	@JsonIgnore
+	
 	private EmployeeInfoBean infoBean;
 	
 	@Column(name = "pan")
 	private String pan;
 //	@XmlElement(name = "is-married")
-	@JsonProperty(value = "is-married")
 	@Column(name = "ismarried")
 	private Boolean isMarried;
 	@Column(name = "blood_grp")
-	@JsonProperty(value = "blood-group")
+	
 //	@XmlElement(name = "blood-group")
 	private String bloodGrp;
 	@Column(name = "ischallenged")
 //	@XmlElement(name = "is-challenged")
-	@JsonProperty(value= "is-challenged")
 	private Boolean isChallenged;
 	@Column(name = "emergency_contact_number")
 //	@XmlElement(name = "emergency-contact-number")
-	@JsonProperty(value = "emergency-contact-number")
 	private long emergencyCN;
 //	@XmlElement(name = "emergency-contact-person")
-	@JsonProperty(value = "emergency-contact-person")
 	@Column(name = "emergency_contact_person")
 	private String emergencyCP;
 	@Column(name = "nationality")
@@ -60,15 +57,12 @@ public class EmployeeOtherInfoBean implements Serializable{
 	private String religion;
 	@Column(name = "father_nm")
 //	@XmlElement(name = "father-name")
-	@JsonProperty(value = "father-name")
 	private String fatherNM;
 	@Column(name = "mother_nm")
 //	@XmlElement(name = "mother-name")
-	@JsonProperty(value = "mother-name")
 	private String motherNM;
 	@Column(name = "spouse_nm")
 //	@XmlElement(name = "spouse-name")
-	@JsonProperty(value = "spouse-name")
 	private String spouseNM;
 	@Column(name = "passport")
 	private String passport;
