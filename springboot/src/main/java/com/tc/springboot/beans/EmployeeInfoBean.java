@@ -1,4 +1,4 @@
-package com.tc.empspringrest.beans;
+package com.tc.springboot.beans;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -37,7 +37,7 @@ import lombok.Data;
 @Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
+	@OneToOne(cascade = {CascadeType.ALL}, mappedBy = "infoBean")
 //	@XmlElement(name = "other-info")
 	@JsonProperty(value = "otherInfo")
 	private EmployeeOtherInfoBean otherInfo;
@@ -68,7 +68,7 @@ public class EmployeeInfoBean implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "age")

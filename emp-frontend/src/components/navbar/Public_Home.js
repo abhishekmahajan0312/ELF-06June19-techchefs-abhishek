@@ -8,7 +8,7 @@ export const PublicHome = (props) => {
         <Router>
             <Route exact path="/" component={Login} />
             <Route exact path="/homePage" component={HomePage}/>
-            <Route exact path="/searchEmployee" component={SearchEmployee}/>
+            <Route exact path="/searchEmployee"  component={SearchEmployee}/>
             {/* <Route exact path="/info" component={Info}/> */}
         </Router>
     )

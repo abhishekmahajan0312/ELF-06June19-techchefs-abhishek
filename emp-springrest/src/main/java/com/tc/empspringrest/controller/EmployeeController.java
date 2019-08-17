@@ -41,7 +41,7 @@ import com.tc.empspringrest.beans.EmployeeResponse;
 import com.tc.empspringrest.dao.EmployeeDao;
 import com.tc.empspringrest.dao.Employees;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000","/"})
 @RestController
 @RequestMapping("/employee")
 @PropertySource(PROPERTY_FILENAME)

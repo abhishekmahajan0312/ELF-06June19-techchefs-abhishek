@@ -19,8 +19,10 @@ class UserHomeNavbar extends Component {
             console.log('Response Data', response.data);
             const responseData = response.data;
             if (responseData.statusCode === 201 && responseData.message === "Successfull") {
+                localStorage.removeItem('beans');
                 localStorage.setItem('beans', JSON.stringify(responseData.beans))
                 this.props.history.push("/searchEmployee")
+
             }
             // let fetchedAccounts = [];
             // for (let key in response.data) {
