@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<%@page import="org.springframework.web.servlet.support.ServletUriComponentsBuilder"%>
 <%@page import="com.tc.empspringmvc.beans.EmployeeInfoBean"%>
 <%@page import="java.util.List"%>
+<%
+	String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+%>
 <html>
 
 <head>
@@ -23,11 +27,11 @@
 	<div class='container'>
 		<div class='row navbar navbar-inverse'>
 			<div class='col-md-2'>
-				<a href='../validate/getHomePage'><img src='1.png'
+				<a href='<%=baseUrl%>/validator/validate/getHomePage'><img src='1.png'
 					style='width: 50px; height: 50px;'></a>
 			</div>
 			<div class='col-md-8'>
-				<form action='../validate/searchEmployee'>
+				<form action='<%=baseUrl%>/validator/validate/searchEmployee'>
 					 <input
 						type='search' name='q'
 						placeholder='Enter Employee ID or Name' class='form-control'>
@@ -38,7 +42,7 @@
 				</form>
 			</div>
 			<div class='col-md-1'>
-				<a href='../../logout'>Logout</a>
+				<a href='<%=baseUrl%>/logout'>Logout</a>
 			</div>
 		</div>
 		<br>
@@ -55,7 +59,7 @@
 							for (EmployeeInfoBean bean : beans) {
 						%>
 						<tr>
-							<td><a href='./getEmployee?id=<%=bean.getId()%>'><%=bean.getId()%></a></td>
+							<td><a href='<%=baseUrl%>/validator/validate/getEmployee?id=<%=bean.getId()%>'><%=bean.getId()%></a></td>
 							<td><%=bean.getName()%></td>
 						</tr>
 						<%

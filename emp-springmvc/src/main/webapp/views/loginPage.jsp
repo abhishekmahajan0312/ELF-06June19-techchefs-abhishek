@@ -46,7 +46,7 @@
 						</button>
 					</div>
 					
-					<form class="form-horizontal" action="./authenticate" method="POST">
+					<form class="form-horizontal" action="/emp-springmvc/login/authenticate" method="POST">
 						<div class="col-auto">
 							<label class="sr-only" for="id">Id</label>
 							<div class="input-group mb-2">
@@ -80,7 +80,7 @@
 						</div>
 						<br>
 						<div class=" row">
-							<a href="createEmployeePage"
+							<a href="../employee/createEmployeePage"
 								class="offset-1 col-md-5 btn btn-outline-success"
 								style="border-radius: 3px 0 0 3px; border-right: 0">Create
 								Account</a> <a href="forgotpassword.html"
