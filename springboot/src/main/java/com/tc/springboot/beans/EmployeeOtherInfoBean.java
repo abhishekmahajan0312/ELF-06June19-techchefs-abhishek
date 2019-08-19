@@ -5,10 +5,13 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,8 +31,12 @@ import lombok.val;
 @Data
 public class EmployeeOtherInfoBean implements Serializable{
 	@Id
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@GeneratedValue
+	@JsonIgnore
+	private int otherInfoid;
+	
+	@OneToOne
+	@JoinColumn(name = "id", referencedColumnName = "id", unique = true, nullable =false)
 //	@XmlTransient
 	@JsonIgnore
 	private EmployeeInfoBean infoBean;

@@ -8,21 +8,30 @@ export class SearchEmployee extends Component {
         this.state = {
             beans: JSON.parse(localStorage.getItem("beans"))
         }
+        // this.updatedValue.bind(this)
+    }
+    updatedValue=(data)=>{
+        console.log(data)
+        
+        this.setState({
+            beans: JSON.parse(data)
+        })
     }
     // componentDidUpdate() {
     //     this.setState({
     //         beans: JSON.parse(localStorage.getItem("beans"))
     //     })
     // }
-    // componentDidMount(){
-    //     this.setState({
-    //         beans: JSON.parse(localStorage.getItem("beans"))
-    //     })
-    // }
+     componentDidMount(){
+        /* this.setState({
+            beans: JSON.parse(localStorage.getItem("beans"))
+       }) */
+       debugger
+    }
     render() {
         return (
             <div>
-                <UserHomeNavbar name={localStorage.getItem("username")} />
+                <UserHomeNavbar func={this.updatedValue} name={localStorage.getItem("username")} />
                 <div className='row'>
                     <div className='col-md-12 card '>
                         <table className='table table-striped'>
