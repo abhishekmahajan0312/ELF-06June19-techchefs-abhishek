@@ -115,7 +115,7 @@ export class Login extends Component {
                                                     password: event.target.value
                                                 })
                                             }}
-                                                value={this.state.email} type="password"
+                                                value={this.state.password} type="password"
                                                 className="form-control" name="password"
                                                 placeholder="Enter Password" />
                                         </div>

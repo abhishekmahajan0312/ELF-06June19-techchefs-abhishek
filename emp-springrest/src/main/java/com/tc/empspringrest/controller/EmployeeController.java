@@ -63,7 +63,7 @@ public class EmployeeController {
 
 		EmployeeResponse response = new EmployeeResponse();
 		HttpSession session = req.getSession(false);
-		if (session!=null) {
+		if (session != null) {
 			if (dao.deleteEmployeeInfo(id)) {
 				response.setStatusCode(201);
 				response.setMessage("Successfull");
@@ -88,17 +88,17 @@ public class EmployeeController {
 		EmployeeResponse response = new EmployeeResponse();
 //		HttpSession session = req.getSession(false);
 //		if (session!=null) {
-			EmployeeInfoBean bean = dao.getEmployeeInfo(id);
-			if (bean != null) {
-				response.setStatusCode(201);
-				response.setMessage("Successfull");
-				response.setDescription("Employee data found successfully");
-				response.setBeans(Arrays.asList(bean));
-			} else {
-				response.setStatusCode(401);
-				response.setMessage("Failure");
-				response.setDescription("Employee data not found");
-			}
+		EmployeeInfoBean bean = dao.getEmployeeInfo(id);
+		if (bean != null) {
+			response.setStatusCode(201);
+			response.setMessage("Successfull");
+			response.setDescription("Employee data found successfully");
+			response.setBeans(Arrays.asList(bean));
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Employee data not found");
+		}
 //		} else {
 ////			session.invalidate();
 //			response.setStatusCode(501);
@@ -107,23 +107,23 @@ public class EmployeeController {
 //		}
 		return response;
 	}
-	
+
 	@GetMapping(path = "/searchEmployee", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public EmployeeResponse searchEmployee(@RequestParam(name = "empId") int id, HttpServletRequest req) {
 		EmployeeResponse response = new EmployeeResponse();
 //		HttpSession session = req.getSession(false);
 //		if (session!=null) {
-			List<EmployeeInfoBean> beans = dao.getAllEmployeeInfoWithRestrictions(id);
-			if (beans != null) {
-				response.setStatusCode(201);
-				response.setMessage("Successfull");
-				response.setDescription("Employee data found successfully");
-				response.setBeans(beans);
-			} else {
-				response.setStatusCode(401);
-				response.setMessage("Failure");
-				response.setDescription("Employee data not found");
-			}
+		List<EmployeeInfoBean> beans = dao.getAllEmployeeInfoWithRestrictions(id);
+		if (beans != null) {
+			response.setStatusCode(201);
+			response.setMessage("Successfull");
+			response.setDescription("Employee data found successfully");
+			response.setBeans(beans);
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Employee data not found");
+		}
 //		} else {
 ////			session.invalidate();
 //			response.setStatusCode(501);
@@ -184,8 +184,9 @@ public class EmployeeController {
 
 		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
 		otherInfo.setInfoBean(bean);
-
-		bean.setMngrId(dao.getEmployeeInfo(bean.getMngrId().getId()));
+		if (bean.getMngrId() != null) {
+			bean.setMngrId(dao.getEmployeeInfo(bean.getMngrId().getId()));
+		}
 		boolean result = dao.createEmployeeInfo(bean);
 		EmployeeResponse response = new EmployeeResponse();
 		if (result) {

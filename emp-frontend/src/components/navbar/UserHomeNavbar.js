@@ -8,21 +8,25 @@ class UserHomeNavbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchId: ''
+            searchId: '',
+            updated : false 
         }
     }
+
 
     searchEmployee = (event) => {
         event.preventDefault();
         Axios.get('http://localhost/emp-springrest/employee/searchEmployee?empId=' + this.state.searchId
         ).then((response) => {
+            this.setState({updated:true})
             console.log('Response Data', response.data);
             const responseData = response.data;
             if (responseData.statusCode === 201 && responseData.message === "Successfull") {
-                localStorage.removeItem('beans');
+                // localStorage.removeItem('beans');
                 localStorage.setItem('beans', JSON.stringify(responseData.beans))
+                
                 this.props.history.push("/searchEmployee")
-
+                this.props.func(JSON.stringify(responseData.beans));
             }
             // let fetchedAccounts = [];
             // for (let key in response.data) {

@@ -3,6 +3,9 @@ package com.tc.springboot.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,9 +54,10 @@ public class EmployeeController {
 
 			EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
 			otherInfo.setInfoBean(bean);
-
-			bean.setMngrId(repository.findById(bean.getMngrId().getId()).get());
-
+			EmployeeInfoBean mngrId = bean.getMngrId();
+			if (mngrId != null) {
+				bean.setMngrId(repository.findById(mngrId.getId()).get());
+			}
 			repository.save(bean);
 			response.setStatusCode(201);
 			response.setMessage("Successfull");
@@ -80,10 +84,45 @@ public class EmployeeController {
 			response.setStatusCode(401);
 			response.setMessage("Failed");
 			response.setDescription("Employee data not found");
+  		}
+		return response;
+	}
+	
+//	@GetMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public EmployeeResponse searchEmployee(String id) {
+//		List<EmployeeInfoBean> beans = repository.searchByEmpId(id+"%");
+//		EmployeeResponse response = new EmployeeResponse();
+//		if (beans != null) {
+//			response.setStatusCode(201);
+//			response.setMessage("Successfull");
+//			response.setDescription("Employee data found successfully");
+//			response.setBeans(beans);
+//		} else {
+//			response.setStatusCode(401);
+//			response.setMessage("Failed");
+//			response.setDescription("Employee data not found");
+//		}
+//		return response;
+//	}
+	@GetMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeResponse searchEmployee(int id) {
+		List<EmployeeInfoBean> beans = repository.searchByEmpId(id);
+		EmployeeResponse response = new EmployeeResponse();
+		if (beans != null) {
+			response.setStatusCode(201);
+			response.setMessage("Successfull");
+			response.setDescription("Employee data found successfully");
+			response.setBeans(beans);
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failed");
+			response.setDescription("Employee data not found");
 		}
 		return response;
 	}
 
+
+	
 	@PutMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeResponse updateEmployee(@RequestBody EmployeeInfoBean bean) {
 		EmployeeResponse response = new EmployeeResponse();
@@ -93,6 +132,8 @@ public class EmployeeController {
 			response.setDescription("Employee does not exists");
 			return response;
 		}
+		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
+		otherInfo.setInfoBean(bean);
 		List<EmployeeEducationInfoBean> eduBeans = bean.getEducationInfoBeans();
 		for (EmployeeEducationInfoBean employeeEducationInfoBean : eduBeans) {
 			employeeEducationInfoBean.getEducationPKBean().setInfoBean(bean);
@@ -105,11 +146,16 @@ public class EmployeeController {
 		for (EmployeeExperienceInfoBean employeeExperienceInfoBean : expBeans) {
 			employeeExperienceInfoBean.getExperiencePKBean().setInfoBean(bean);
 		}
-
-		EmployeeOtherInfoBean otherInfo = bean.getOtherInfo();
-		otherInfo.setInfoBean(bean);
-		EmployeeInfoBean mngrId = repository.findById(bean.getMngrId().getId()).get();
-		bean.setMngrId(mngrId);
+//		EmployeeInfoBean oldInfoBean = repository.findById(bean.getId()).get();
+//		bean.getOtherInfo().setOtherInfoid(oldInfoBean.getOtherInfo().getOtherInfoid());   //One method to set otherInfo id while updating
+		
+//		EmployeeInfoBean oldInfoBean = getOtherInfo(bean.getId());
+		
+		bean.getOtherInfo().setOtherInfoid(repository.findByEmpId(bean).getOtherInfoid());
+		EmployeeInfoBean mngrId = bean.getMngrId();
+		if (mngrId != null) {
+			bean.setMngrId(repository.findById(mngrId.getId()).get());
+		}
 		repository.save(bean);
 		response.setStatusCode(201);
 		response.setMessage("Successfull");
@@ -117,6 +163,13 @@ public class EmployeeController {
 
 		return response;
 	}
+	@GetMapping(value = "/getotherinfo", produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeOtherInfoBean getOtherInfo(int id) {
+		EmployeeInfoBean bean = new EmployeeInfoBean();
+		bean.setId(id);
+		return repository.findByEmpId(bean);
+	}
+	
 	@DeleteMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeResponse deleteEmployee(@RequestParam(name = "id") int id) {
 		EmployeeResponse response = new EmployeeResponse();
@@ -133,4 +186,31 @@ public class EmployeeController {
 
 		return response;
 	}
+	
+	@PostMapping(path="/authenticate")
+	public EmployeeResponse authenticate(int id,String password, HttpServletRequest request) {
+		EmployeeResponse response = new EmployeeResponse();
+		if (!repository.existsById(id)) {
+			response.setStatusCode(401);
+			response.setMessage("Failed");
+			response.setDescription("Invalid Credentials!!");
+			return response;
+		}
+		EmployeeInfoBean bean = repository.findById(id).get();
+		if(bean.getPassword().equals(password)) {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("bean", bean);
+			response.setStatusCode(201);
+			response.setMessage("Successfull");
+			response.setDescription("Login successful");
+			response.setBeans(Arrays.asList(bean));
+		}
+		else {
+			response.setStatusCode(401);
+			response.setMessage("Failed");
+			response.setDescription("Invalid Credentials");
+		}
+		return response;
+	}
+	
 }

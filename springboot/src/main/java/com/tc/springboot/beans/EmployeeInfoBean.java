@@ -37,7 +37,7 @@ import lombok.Data;
 @Table(name = "employee_info")
 public class EmployeeInfoBean implements Serializable {
 
-	@OneToOne(cascade = {CascadeType.ALL}, mappedBy = "infoBean")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "infoBean")
 //	@XmlElement(name = "other-info")
 	@JsonProperty(value = "otherInfo")
 	private EmployeeOtherInfoBean otherInfo;
